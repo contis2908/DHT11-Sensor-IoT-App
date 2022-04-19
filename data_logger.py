@@ -16,7 +16,7 @@ DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
 
-pub_topic = TOPIC_PREFIX + '.' + serial_number
+pub_topic = TOPIC_PREFIX
 
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
@@ -65,12 +65,13 @@ def onJoin(session, details):
 
         if humidity is not None and temperature is not None:
             print("Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
+            # print(f"Temp: {temperature:.1f}")
 
             toPublish = result_dict = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
                 "device_name": device_name,
                 "serial_number": serial_number,
-                "data": [format(humidity,'0.1f'), format(temperature,'0.1f')]
+                "data": [float(format(humidity,'0.1f')), float(format(temperature,'0.1f'))]
             }
 
             try:
