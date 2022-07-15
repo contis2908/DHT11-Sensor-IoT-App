@@ -1,17 +1,13 @@
 import Adafruit_DHT
 import time
 import os
+from asyncio import sleep
 from datetime import datetime
+from asyncio.events import get_event_loop
+from reswarm import Reswarm
 
-from autobahn.twisted.component import Component, run
-from autobahn.wamp.types import PublishOptions
-from twisted.internet.defer import inlineCallbacks
-from twisted.internet.task import LoopingCall
-from autobahn.twisted.util import sleep
-from twisted.internet import reactor
-
-# # Get environment variables
-TOPIC_PREFIX = os.environ.get('TOPIC_PREFIX', 'reswarm.tempHmd')
+# Get environment variables
+TOPIC_PREFIX = os.environ.get('TOPIC_PREFIX', 'reswarm.sensorData')
 DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
@@ -21,86 +17,50 @@ pub_topic = TOPIC_PREFIX
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
+async def main():
 
-def measure():
-    try:
-        humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
-    except:
-        print("Error: Problem reading data from sensor...")
-
-    return humidity, temperature
-
-
-
-
-comp = Component(
-    transports={
-                "type": "websocket",
-                "url": "ws://cb.reswarm.io:8088",
-                "max_retries": -1,
-                "max_retry_delay": 2,
-                "initial_retry_delay": 0.5,
-                # "autoping_interval": 2,
-                # "autoping_timeout": 4
-                },
-    realm=u"userapps",
-    authentication={
-        u"wampcra": {
-            u'authid': os.environ['DEVICE_SERIAL_NUMBER'],
-            u'secret': os.environ['DEVICE_SERIAL_NUMBER']
-        }
-    },
-)
-
-@comp.on_join
-@inlineCallbacks
-def onJoin(session, details):
-    print("Session: {} - Details: {}".format(session, details))
-    print("publishing to " + pub_topic)
     while True:
+
+        humidity = ''
+        temperature = ''
+
         try:
-            humidity, temperature = measure()
+            print("measure...")
+            humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+            print("Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
+            
         except:
-            humidity, temperature = ""
+            print("Error: Problem reading data from sensor... ")
+
+        await sleep(2)
 
         if humidity is not None and temperature is not None:
             print("Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
-            # print(f"Temp: {temperature:.1f}")
 
-            toPublish = result_dict = {
+            data = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
                 "device_name": device_name,
                 "serial_number": serial_number,
-                "data": [float(format(humidity,'0.1f')), float(format(temperature,'0.1f'))]
+                "humidity": float(format(humidity,'0.1f')),
+                "temperature": float(format(temperature,'0.1f'))
             }
 
             try:
-                session.publish(pub_topic, toPublish)
+                rw = Reswarm(serial_number=serial_number)
+                result = await rw.publish(pub_topic, data)
             except:
+                print("Error during publish");
                 pass
 
         else:
             print("Error: No value for Humidity and Temperature - skip publish");
+
+   
             
-        yield sleep(DATA_LOG_INTERVAL)
-    
-
-@comp.on_leave
-def onLeave(session, details):
-    print('onLeave...')
-    session.disconnect()
-
-
-@comp.on_disconnect
-def onDisconnect(session, was_clean):
-    print('onDisconnect...')
-
-@comp.on_connectfailure
-def onConnectfailure(session, was_clean):
-    print('onConnectfailure...')
 
 if __name__ == "__main__":
-    run([comp])
+    get_event_loop().run_until_complete(main())
+
 
 
             

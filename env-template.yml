@@ -6,35 +6,30 @@
 # NOTE: Template entries without a label property will not be displayed
 # NOTE: 'OPTIONAL' key/values can be left out in the template definition
 
-MOTOR_SPEED: # The name of the environment variable that contains the user provided value
-    defaultValue: 1000 # OPTIONAL | Default value. (string | number)
-    description: '' # OPTIONAL | Description. (string)
-    label: 'Numeric input example' # REQUIRED | Label displayed above the input field. (string)
-    unit: Unit # OPTIONAL | Unit displayed next to label. (string)
-    max: 4000 # OPTIONAL | Maximum allowed value. Only makes sense with 'numeric' type. (number)
-    min: 500 # OPTIONAL | Minimum allowed value. Only makes sense with 'numeric' type. (number)
-    type: numeric # REQUIRED | Type of value. ('numeric' | 'text' | 'boolean')
-    secret: false # OPTIONAL | Makes value invisible once set. (boolean)
-    optional: true # OPTIONAL | Optional or required. (boolean)
-SENSITIVITY:
-    defaultValue: 600
-    description: 'Example description'
-    label: 'Dropdown input example'
-    type: numeric
-    valueList: [500, 600, 800, 2000, 4000] # OPTIONAL | Allows selection of value from a list of values.  (number[] | string[])
-    optional: false
-PASSWORD:
-    label: Password input example
+# MOTOR_SPEED: # The name of the environment variable that contains the user provided value
+#     defaultValue: 1000 # OPTIONAL | Default value. (string | number)
+#     description: '' # OPTIONAL | Description. (string)
+#     label: 'Numeric input example' # REQUIRED | Label displayed above the input field. (string)
+#     unit: Unit # OPTIONAL | Unit displayed next to label. (string)
+#     max: 4000 # OPTIONAL | Maximum allowed value. Only makes sense with 'numeric' type. (number)
+#     min: 500 # OPTIONAL | Minimum allowed value. Only makes sense with 'numeric' type. (number)
+#     type: numeric # REQUIRED | Type of value. ('numeric' | 'text' | 'boolean')
+#     secret: false # OPTIONAL | Makes value invisible once set. (boolean)
+#     optional: true # OPTIONAL | Optional or required. (boolean)
+# SENSITIVITY:
+#     defaultValue: 600
+#     description: 'Example description'
+#     label: 'Dropdown input example'
+#     type: numeric
+#     valueList: [500, 600, 800, 2000, 4000] # OPTIONAL | Allows selection of value from a list of values.  (number[] | string[])
+#     optional: false
+# PASSWORD:
+#     label: Password input example
+#     type: text
+#     secret: true
+#     optional: false
+TOPIC:
+    label: Reswarm topic to publish
     type: text
-    secret: true
-    optional: false
-ENABLED:
-    label: Checkbox example
-    type: boolean # REQUIRED | Sets a lowercase string representation of a boolean value ('true', 'false').
-    defaultValue: false
-PERCENTAGE:
-    label: Numeric percentage input example
-    type: numeric
-    step: 0.01 # OPTIONAL | Defines the step for a numeric value. Defaults to 1 when not set, defaults to 0.1 when max is 1.
-    min: 0
-    max: 100
+    optional: true
+    secret: false
