@@ -33,3 +33,8 @@ TOPIC:
     type: text
     optional: true
     secret: false
+LOOP_TIME:
+    defaultValue: 5
+    label: 'Interval of measurment in seconds'
+    type: numeric
+    optional: true

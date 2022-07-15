@@ -11,9 +11,8 @@ TOPIC_PREFIX = os.environ.get('TOPIC_PREFIX', 'reswarm.sensorData')
 DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
-
 pub_topic = TOPIC_PREFIX
-
+loop_time = os.environ['LOOP_TIME']
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
@@ -32,10 +31,8 @@ async def main():
         except:
             print("Error: Problem reading data from sensor... ")
 
-        await sleep(2)
-
         if humidity is not None and temperature is not None:
-            print("Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
+            # print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
 
             data = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
@@ -54,6 +51,8 @@ async def main():
 
         else:
             print("Error: No value for Humidity and Temperature - skip publish");
+        
+        await sleep(int(loop_time))
 
    
             
