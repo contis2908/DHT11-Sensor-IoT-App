@@ -1,7 +1,7 @@
 # The DHT11-Sensor for Temperature and Humidity
 The DHT11 Sensor consists of a temperature and humidity sensor with a calibrated digital signal output. This App reads the humidity and temperature of a connects DHT-11 Sensor with a RaspberryPi. The data is published together with time and device information to the specified Reswarm topic and can be subscribed to with the Record Evolution Data Studio.
 
-Measurement Range for Temperature between 0 and 50 Degree Celcius
+Measurement Range for Temperature between 0 and 50 Degree Celcius \
 Measurement Range for Humidity between 0 and 100
 
 
@@ -24,5 +24,5 @@ Default name of Topic: _**reswarm.sensorData**_
     "data": [float(format(humidity,'0.1f')), float(format(temperature,'0.1f'))]
 
 ### MIT
-Copyright (c) 2021 Record Evolution GmbH
+Copyright (c) 2021 Record Evolution GmbH \
 See license file on the source code
