@@ -26,13 +26,12 @@ async def main():
         try:
             print("measure...")
             humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
-            print("Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
-            
-        except:
-            print("Error: Problem reading data from sensor... ")
+    
+        except Exception as e:
+            print("Error: Problem reading data from sensor... ", e)
 
         if humidity is not None and temperature is not None:
-            # print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
+            print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
 
             data = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
