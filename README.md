@@ -16,7 +16,7 @@ Read \
 
 
 ## Publish 
-Name of Topic: _**reswarm.sensorData**_
+Default name of Topic: _**reswarm.sensorData**_
 
     "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
     "device_name": device_name,
