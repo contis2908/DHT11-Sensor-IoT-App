@@ -21,7 +21,8 @@ Default name of Topic: _**reswarm.sensorData**_
     "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
     "device_name": device_name,
     "serial_number": serial_number,
-    "data": [float(format(humidity,'0.1f')), float(format(temperature,'0.1f'))]
+    "humidity": float(format(humidity,'0.1f')),
+    "temperature": float(format(temperature,'0.1f'))
 
 ### MIT
 Copyright (c) 2021 Record Evolution GmbH \
