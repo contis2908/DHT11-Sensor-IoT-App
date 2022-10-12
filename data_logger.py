@@ -7,12 +7,13 @@ from asyncio.events import get_event_loop
 from reswarm import Reswarm
 
 # Get environment variables
-TOPIC_PREFIX = os.environ.get('TOPIC_PREFIX', 'reswarm.sensorData')
 DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
-pub_topic = TOPIC_PREFIX
+# topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
+topic_pub = os.environ['TOPIC_PUB']
 loop_time = os.environ['LOOP_TIME']
+
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
@@ -32,7 +33,7 @@ async def main():
 
         if humidity is not None and temperature is not None:
             print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
-            print("Topic ", pub_topic)
+            print("topic ", topic_pub)
             data = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
                 "device_name": device_name,
@@ -43,7 +44,7 @@ async def main():
 
             try:
                 rw = Reswarm(serial_number=serial_number)
-                result = await rw.publish(pub_topic, data)
+                result = await rw.publish(topic_pub, data)
             except:
                 print("Error during publish");
                 pass
