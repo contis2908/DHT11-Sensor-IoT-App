@@ -9,7 +9,6 @@
 TOPIC_PUB:
     label: Reswarm topic to publish
     type: text
-    secret: false
     optional: true
 LOOP_TIME:
     defaultValue: 5
