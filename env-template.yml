@@ -7,7 +7,6 @@
 # NOTE: 'OPTIONAL' key/values can be left out in the template definition
 
 TOPIC_PUB:
-    defaultValue: 'reswarm.sensorData'
     label: Reswarm topic to publish
     type: text
     optional: true
