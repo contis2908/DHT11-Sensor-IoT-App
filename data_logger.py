@@ -10,8 +10,8 @@ from reswarm import Reswarm
 DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
-topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
-# topic_pub = os.environ['TOPIC_PUB']
+# topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
+topic_pub = os.environ['TOPIC_PUB']
 loop_time = os.environ['LOOP_TIME']
 
 DHT_SENSOR = Adafruit_DHT.DHT11
@@ -33,7 +33,7 @@ async def main():
 
         if humidity is not None and temperature is not None:
             print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
-            print("topic ", topic_pub, os.environ['TOPIC_PUB'])
+            print("topic ", topic_pub)
             data = {
                 "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
                 "device_name": device_name,
