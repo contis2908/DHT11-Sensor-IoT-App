@@ -10,8 +10,8 @@ from reswarm import Reswarm
 DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
-# topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
-topic_pub = os.environ['TOPIC_PUB']
+topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
+# topic_pub = os.environ['TOPIC_PUB']
 loop_time = os.environ['LOOP_TIME']
 
 DHT_SENSOR = Adafruit_DHT.DHT11
