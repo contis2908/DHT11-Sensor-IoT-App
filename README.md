@@ -7,16 +7,16 @@ Measurement Range for Humidity between 0 and 100
 
 ## Available Environment Variables
 #### Write
-    TOPIC_PUB                  the topic the data is published to
-    Default:                   "reswarm.sensorData"
+    TOPIC_PUB: the topic the data is published to
+    Default: "reswarm.sensorData"
 
-    LOOP_TIME                  the publishing interval
-    Default:                   "5 seconds"
+    LOOP_TIME: the publishing interval
+    Default: "5 seconds"
 
 #### Read
-    DEVICE_NAME            - current device's name (could change)
-    DEVICE_SERIAL_NUMBER   - the unique identifier of the device (is immutable)
-    SWARM_KEY              - the unique key of the swarm
+    DEVICE_NAME: current device's name (could change)
+    DEVICE_SERIAL_NUMBER: the unique identifier of the device (is immutable)
+    SWARM_KEY: the unique key of the swarm
 
 
 ## Publish 
