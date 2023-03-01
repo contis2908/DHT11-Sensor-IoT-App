@@ -7,26 +7,26 @@ Measurement Range for Humidity between 0 and 100
 
 ## Available Environment Variables
 #### Write
-TOPIC_PUB: the topic the data is published to
-Default: "reswarm.sensorData"
+**TOPIC_PUB**: the topic the data is published to \
+**Default**: "reswarm.sensorData" \
 
-LOOP_TIME: the publishing interval
-Default: "5" seconds
+**LOOP_TIME**: the publishing interval \
+**Default**: "5" seconds
 
 #### Read
-DEVICE_NAME: current device name (could change)
-DEVICE_SERIAL_NUMBER: the unique identifier of the device (is immutable)
-SWARM_KEY: the unique key of the swarm
+**DEVICE_NAME**: current device name (could change) \
+**DEVICE_SERIAL_NUMBER**: the unique identifier of the device (is immutable) \
+**SWARM_KEY**: the unique key of the swarm
 
 
 ## Publish 
-Default name of Topic: _**reswarm.sensorData**_
+**Default topic**: reswarm.sensorData \
 
-"timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
-"device_name": device_name,
-"serial_number": serial_number,
-"humidity": float(format(humidity,'0.1f')),
-"temperature": float(format(temperature,'0.1f'))
+"timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'), \
+"device_name": device_name, \
+"serial_number": serial_number, \
+"humidity": float(format(humidity,'0.1f')), \
+"temperature": float(format(temperature,'0.1f')) \
 
 ### MIT
 Copyright (c) 2021 Record Evolution GmbH \
