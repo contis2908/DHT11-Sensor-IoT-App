@@ -11,10 +11,10 @@ Measurement Range for Humidity between 0 and 100
     Default: "reswarm.sensorData"
 
     LOOP_TIME: the publishing interval
-    Default: "5 seconds"
+    Default: "5" seconds
 
 #### Read
-    DEVICE_NAME: current device's name (could change)
+    DEVICE_NAME: current device name (could change)
     DEVICE_SERIAL_NUMBER: the unique identifier of the device (is immutable)
     SWARM_KEY: the unique key of the swarm
 
