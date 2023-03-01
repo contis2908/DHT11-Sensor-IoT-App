@@ -7,14 +7,14 @@ Measurement Range for Humidity between 0 and 100
 
 ## Available Environment Variables
 
-### Write
+### _Write_
 **TOPIC_PUB**: the topic the data is published to <br>
 **Default**: "reswarm.sensorData"
 
 **LOOP_TIME**: the publishing interval <br>
 **Default**: "5" seconds
 
-### Read
+### _Read_
 **DEVICE_NAME**: current device name (could change) <br>
 **DEVICE_SERIAL_NUMBER**: the unique identifier of the device (is immutable) <br>
 **SWARM_KEY**: the unique key of the swarm
@@ -27,6 +27,6 @@ Measurement Range for Humidity between 0 and 100
     humidity: float(format(humidity,'0.1f')),
     temperature: float(format(temperature,'0.1f'))
 
-### MIT
+## MIT License
 Copyright (c) 2021 Record Evolution GmbH <br>
 See license file on the source code
