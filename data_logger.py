@@ -7,17 +7,16 @@ from asyncio.events import get_event_loop
 from reswarm import Reswarm
 
 # Get environment variables
-DATA_LOG_INTERVAL = float(os.environ.get('DATA_LOG_INTERVAL', 10.0))
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
 topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
-# topic_pub = os.environ['TOPIC_PUB']
-loop_time = os.environ['LOOP_TIME']
+loop_time = int(os.environ['LOOP_TIME'])
 
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
 async def main():
+    rw = Reswarm()
 
     while True:
 
@@ -25,17 +24,16 @@ async def main():
         temperature = ''
 
         try:
-            print("measure...")
             humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
     
         except Exception as e:
             print("Error: Problem reading data from sensor... ", e)
 
         if humidity is not None and temperature is not None:
-            print("Now Publish - Temp: {0:0.1f}C  Humidity: {1:0.1f}%".format(temperature, humidity))
-            print("topic ", topic_pub)
+            now = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+            print(f"{now} Publish - Temp: {temperature:0.1f}C  Humidity: {humidity:0.1f}% Topic: {topic_pub}")
             data = {
-                "timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
+                "timestamp": now,
                 "device_name": device_name,
                 "serial_number": serial_number,
                 "humidity": float(format(humidity,'0.1f')),
@@ -43,7 +41,6 @@ async def main():
             }
 
             try:
-                rw = Reswarm(serial_number=serial_number)
                 result = await rw.publish(topic_pub, data)
             except:
                 print("Error during publish");
@@ -52,7 +49,7 @@ async def main():
         else:
             print("Error: No value for Humidity and Temperature - skip publish");
         
-        await sleep(int(loop_time))
+        await sleep(loop_time)
 
    
             
