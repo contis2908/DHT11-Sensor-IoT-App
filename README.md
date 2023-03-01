@@ -7,10 +7,11 @@ Measurement Range for Humidity between 0 and 100
 
 ## Available Environment Variables
 #### Write \
-    **TOPIC_PUB**                  - the topic the data is published to
-    Default: _**reswarm.sensorData**_ \
-    **LOOP_TIME**                  - the publishing interval
-    Default: **5 seconds**
+    **TOPIC_PUB**                  - the topic the data is published to \
+    **Default:**                   - reswarm.sensorData \
+
+    **LOOP_TIME**                  - the publishing interval\
+    **Default:**                   - 5 seconds
 
 #### Read \
     **DEVICE_NAME**            - current device's name (could change) \
