@@ -4,30 +4,28 @@ The DHT11 Sensor consists of a temperature and humidity sensor with a calibrated
 Measurement Range for Temperature between 0 and 50 Degree Celcius <br>
 Measurement Range for Humidity between 0 and 100
 
--------------------------------------------------------------------------------------------
 
 ## Available Environment Variables
 
-#### Write
+### Write
 **TOPIC_PUB**: the topic the data is published to <br>
 **Default**: "reswarm.sensorData"
 
 **LOOP_TIME**: the publishing interval <br>
 **Default**: "5" seconds
 
-#### Read
+### Read
 **DEVICE_NAME**: current device name (could change) <br>
 **DEVICE_SERIAL_NUMBER**: the unique identifier of the device (is immutable) <br>
 **SWARM_KEY**: the unique key of the swarm
 
--------------------------------------------------------------------------------------------
 
 ## Publish 
-`"timestamp": datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'), <br>
-"device_name": device_name, <br>
-"serial_number": serial_number, <br>
-"humidity": float(format(humidity,'0.1f')), <br>
-"temperature": float(format(temperature,'0.1f'))`
+    timestamp: datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
+    device_name: device_name,
+    serial_number: serial_number,
+    humidity: float(format(humidity,'0.1f')),
+    temperature: float(format(temperature,'0.1f'))
 
 ### MIT
 Copyright (c) 2021 Record Evolution GmbH <br>
