@@ -4,6 +4,7 @@ The DHT11 Sensor consists of a temperature and humidity sensor with a calibrated
 Measurement Range for Temperature between 0 and 50 Degree Celcius <br>
 Measurement Range for Humidity between 0 and 100
 
+<img style="max-width:60%; margin:16px auto;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681308879/gpio_pi_zero_dht11.png">
 
 ## Available Environment Variables
 
