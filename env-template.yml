@@ -8,11 +8,12 @@
 
 TOPIC_PUB:
     label: Reswarm topic to publish
+    defaultValue: reswarm.sensorData
     type: text
     optional: true
 LOOP_TIME:
     defaultValue: 5
-    label: 'Interval of measurment in seconds'
+    label: Interval of measurment in seconds
     type: numeric
     secret: false
     optional: true

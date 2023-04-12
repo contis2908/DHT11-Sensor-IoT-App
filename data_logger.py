@@ -20,8 +20,8 @@ async def main():
 
     while True:
 
-        humidity = ''
-        temperature = ''
+        humidity = 0
+        temperature = 0
 
         try:
             humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
@@ -52,8 +52,6 @@ async def main():
         await sleep(loop_time)
 
    
-            
-
 if __name__ == "__main__":
     get_event_loop().run_until_complete(main())
 

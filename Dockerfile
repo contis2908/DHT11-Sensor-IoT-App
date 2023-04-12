@@ -13,12 +13,12 @@ RUN apt update && apt install -y \
     python3-pip
 
 # Update setup tools
-RUN pip3 install -U pip && pip3 install --upgrade setuptools wheel
+# RUN pip3 install -U pip && pip3 install --upgrade setuptools wheel
 
 # Install python dependencies
 RUN pip3 install \ 
     Adafruit_DHT \
-    cryptography==3.3.2 \
+    # cryptography==3.3.2 \
     reswarm
 
 # Copy the data to root folder
