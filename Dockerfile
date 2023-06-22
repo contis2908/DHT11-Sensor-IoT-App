@@ -12,18 +12,21 @@ RUN echo '[global]' > /etc/pip.conf && echo 'extra-index-url=https://www.piwheel
 RUN apt update && apt install -y \
     python3-pip
 
-# Update setup tools
-# RUN pip3 install -U pip && pip3 install --upgrade setuptools wheel
+# Update pip
+RUN pip3 install --upgrade pip
+
+COPY requirements.txt ./requirements.txt
 
 # Install python dependencies
-RUN pip3 install \ 
-    Adafruit_DHT \
-    # cryptography==3.3.2 \
-    reswarm
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+RUN mkdir /app
+
+WORKDIR /app
 
 # Copy the data to root folder
 COPY . ./
 
 # Run the script
-CMD ["python3", "/data_logger.py"]
+CMD ["python3", "data_logger.py"]
 

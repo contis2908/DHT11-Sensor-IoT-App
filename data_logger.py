@@ -3,7 +3,7 @@ import time
 import os
 from asyncio import sleep
 from datetime import datetime
-from asyncio.events import get_event_loop
+import asyncio
 from reswarm import Reswarm
 
 # Get environment variables
@@ -15,8 +15,9 @@ loop_time = int(os.environ['LOOP_TIME'])
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
+rw = Reswarm()
+
 async def main():
-    rw = Reswarm()
 
     while True:
 
@@ -53,7 +54,10 @@ async def main():
 
    
 if __name__ == "__main__":
-    get_event_loop().run_until_complete(main())
+    # run the main coroutine
+    asyncio.get_event_loop().create_task(main())
+    # run the reswarm component
+    rw.run()
 
 
 
