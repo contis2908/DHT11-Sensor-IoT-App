@@ -32,7 +32,7 @@ async def main():
 
         if humidity is not None and temperature is not None:
             now = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
-            print(f"{now} Publish - Temp: {temperature:0.1f}C  Humidity: {humidity:0.1f}% Topic: {topic_pub}")
+            print(f"{now} Publish - Temp: {temperature:0.2f}C  Humidity: {humidity:0.2f}% Topic: {topic_pub}")
             data = {
                 "timestamp": now,
                 "device_name": device_name,
