@@ -1,0 +1,41 @@
+
+# Set a base docker image (see https://hub.docker.com/)
+FROM python:3.7-alpine
+
+# Name of the maintainer 
+MAINTAINER Niklas Lang
+
+# 2. (optional) use python wheels from piwheels.org (speeds up build time for arm architectures)
+RUN echo '[global]' > /etc/pip.conf && echo 'extra-index-url=https://www.piwheels.org/simple' >> /etc/pip.conf
+
+# Install / Update Raspbian dependencies
+RUN apk update && apk add \
+    py3-pip \
+    git 
+
+
+# Update pip
+RUN pip3 install --upgrade pip
+
+# RUN apt add g++ python3-dev
+
+# Update setup tools
+# RUN pip3 install --upgrade setuptools wheel
+RUN CFLAGS="-fcommon" pip3 install RPi.GPIO
+# RUN apt del g++ python3-dev
+
+
+# Install python dependencies
+# RUN pip3 --no-cache-dir install git+https://github.com/contis2908/Adafruit_Python_DHT_update.git
+
+# Install / Update Autobahn and other crossbar related dependencies
+
+RUN pip3 install \
+    # reswarm==0.0.14 \
+    adafruit-circuitpython-dht==4.0.2
+
+# Copy the data to root folder
+COPY . ./
+
+# Run the script
+CMD ["python3", "/data_logger.py"]

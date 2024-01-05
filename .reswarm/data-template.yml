@@ -1,0 +1,24 @@
+data:
+  tables:
+    - tablename: sensordata
+      columns:
+        - id: tsp
+          name: Timestamp
+          description: Timestamp of Measurement
+          path: args[0].timestamp
+          dataType: timestamp
+        - id: temperature
+          name: Temperature
+          description: Temperature from DHT11 Sensor in Celcius
+          path: args[0].temperature
+          dataType: numeric
+        - id: humidity
+          name: Humidity
+          description: Humidity from DHT11 Sensor in %
+          path: args[0].humidity
+          dataType: numeric
+        - id: device_name
+          name: Device Name
+          description: Name of Device
+          path: args[0].device_name
+          dataType: string

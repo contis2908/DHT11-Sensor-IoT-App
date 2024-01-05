@@ -1,16 +1,16 @@
 import Adafruit_DHT
 import time
 import os
+import asyncio
 from asyncio import sleep
 from datetime import datetime
-import asyncio
 from reswarm import Reswarm
 
 # Get environment variables
 device_name = os.environ['DEVICE_NAME']
 serial_number = os.environ['DEVICE_SERIAL_NUMBER']
 topic_pub = os.environ.get('TOPIC_PUB', 'reswarm.sensorData')
-loop_time = int(os.environ['LOOP_TIME'])
+loop_time = int(os.environ.get('LOOP_TIME', 5))
 
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
@@ -26,13 +26,12 @@ async def main():
 
         try:
             humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
-    
         except Exception as e:
             print("Error: Problem reading data from sensor... ", e)
 
         if humidity is not None and temperature is not None:
             now = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
-            print(f"{now} Publish - Temp: {temperature:0.2f}C  Humidity: {humidity:0.2f}% Topic: {topic_pub}")
+            # print(f"{now} NOW Publish - Temp: {temperature:0.2f}C  Humidity: {humidity:0.2f}% Topic: {topic_pub}")
             data = {
                 "timestamp": now,
                 "device_name": device_name,
@@ -42,9 +41,11 @@ async def main():
             }
 
             try:
-                result = await rw.publish(topic_pub, data)
-            except:
-                print("Error during publish");
+                # result = await rw.publish(topic_pub, data)
+                await rw.publish_to_table("sensordata", data)
+                print(f'Data was published: {data}')
+            except Exception as e:
+                print("Error: publish ... ", e)
                 pass
 
         else:
