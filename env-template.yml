@@ -17,3 +17,8 @@ LOOP_TIME:
     type: numeric
     secret: false
     optional: true
+DEMO_DATA:
+    defaultValue: true
+    label: Use fake data to publish
+    type: boolean
+    optional: true

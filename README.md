@@ -5,8 +5,9 @@ Measurement Range for Temperature between 0 and 50 Degree Celcius <br>
 Measurement Range for Humidity between 0 and 100
 
 <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
-    <img style="max-width:50%; margin:16px auto;height: 100%;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681308879/gpio_pi_zero_dht11.png">
-    <img style="max-width:40%; margin:16px auto;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681996569/Screenshot_2023-04-20_at_15.16.22.png">
+    <img style="max-width:30%; margin:16px;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681996569/Screenshot_2023-04-20_at_15.16.22.png">
+    <img style="max-width:30%; margin:16px;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1704889350/Screenshot_2024-01-10_at_13.20.34.png">
+    <img style="max-width:30%; margin:16px;height: 100%;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681308879/gpio_pi_zero_dht11.png">
 </div>
 
 ## Available Environment Variables
