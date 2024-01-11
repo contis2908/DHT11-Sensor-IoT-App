@@ -26,6 +26,15 @@ async def main():
         randomHumi = None
         humidity = None
         temperature = None
+        long = None
+        lat = None
+        
+        if(device_name == 'PiZero-Niklas'):
+            long = 13.384971219112401
+            lat = 52.52641442016841
+        else:
+            long = 8.7128233
+            lat = 50.112264 
 
         if demo_data:
             print("Use demo_data ", demo_data)
@@ -46,6 +55,8 @@ async def main():
                 "device_name": device_name,
                 "serial_number": serial_number,
                 "humidity": float(format(humidity or randomHumi,'0.1f')),
+                "long": long,
+                "lat": lat,
                 "temperature": float(format(temperature or randomTemp,'0.1f'))
             }
 

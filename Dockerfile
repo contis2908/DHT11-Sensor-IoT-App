@@ -28,5 +28,5 @@ WORKDIR /app
 COPY . ./
 
 # Run the script
-CMD ["python3", "data_logger.py"]
+CMD ["python3", "-u", "data_logger.py"]
 

@@ -22,6 +22,16 @@ data:
           description: Name of Device
           path: args[0].device_name
           dataType: string
+        - id: long
+          name: Longitude
+          description: GPS Longitude
+          path: args[0].long
+          dataType: numeric
+        - id: lat
+          name: Latitude
+          description: GPS Latitude
+          path: args[0].lat
+          dataType: numeric
           
 
   transforms:

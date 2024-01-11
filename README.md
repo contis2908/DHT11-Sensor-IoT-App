@@ -10,6 +10,11 @@ Measurement Range for Humidity between 0 and 100
     <img style="max-width:30%; margin:16px;height: 100%;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681308879/gpio_pi_zero_dht11.png">
 </div>
 
+### Connecting the Pins with the sensor
+GND - Ground <br>
+Data - GPIO <br>
+VCC - Power
+
 ## Available Environment Variables
 
 ### _Write_
