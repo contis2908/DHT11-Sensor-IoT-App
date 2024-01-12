@@ -1,52 +1,57 @@
 name: DHT11-Temp-HMD-Sens
 layout:
+  - w: 3
+    h: 3
+    x: 0
+    y: 0
+    id: 5
+  - w: 3
+    h: 3
+    x: 3
+    y: 0
+    id: 6
+  - w: 6
+    h: 3
+    x: 6
+    y: 0
+    id: 0
   - w: 4
     h: 3
     x: 0
-    y: 0
+    y: 3
     id: 4
-  - w: 5
+  - w: 8
     h: 3
     x: 4
-    y: 0
-    id: 0
-  - w: 3
-    h: 3
-    x: 9
-    y: 0
-    id: 5
-  - w: 9
-    h: 3
-    x: 0
     y: 3
     id: 1
-  - w: 3
+  - w: 6
     h: 3
-    x: 9
-    y: 3
-    id: 6
-  - w: 12
-    h: 4
     x: 0
+    y: 6
+    id: 8
+  - w: 6
+    h: 3
+    x: 6
     y: 6
     id: 7
 widgets:
-  - version: 1.5.29
+  - version: 1.5.30
     package_name: widget-gauge
     chartdata:
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
-          valueColor: $str:#233543
+          valueColor: $str:#020e27
           sections:
             - $num:-20
             - $num:20
             - $num:80
             - $num:120
           backgroundColors:
-            - $str:#aac8a7
-            - $str:#f1c27b
-            - $str:#ff9b9b
+            - $str:#c3cbf9
+            - $str:#657be6
+            - $str:#172fa6
           averageLatest: $num:1
           data:
             tableRef:
@@ -54,20 +59,22 @@ widgets:
               bufferSize: 500
               format:
                 value: temp1
-                pivot: null
+                pivot: devname
+                tsp: tsp
+          maxLatency: null
       settings:
         title: $str:Live temperature
         subTitle: $str:Will display the latest value from the cloud database
     layout_id: 0
-  - version: 1.4.14
+  - version: 1.4.15
     package_name: widget-linechart
     chartdata:
       settings:
         timeseries: $bool:true
         yAxisLabel: $str:Temperature
         xAxisLabel: $str:Time
-        title: null
-        subTitle: null
+        title: $str:History temperature & humidity
+        subTitle: $str:History of all devices running the app
         columnLayout: null
       dataseries:
         - label: $str:Temperature
@@ -76,8 +83,8 @@ widgets:
           chartName: $str:test#pivot#
           radius: $num:2
           pointStyle: $str:rectRounded
-          backgroundColor: $str:#e15656
-          borderColor: $str:#ff9b9b
+          backgroundColor: $str:#657be6
+          borderColor: $str:#657be6
           borderWidth: $num:2
           fill: $bool:false
           data:
@@ -97,8 +104,8 @@ widgets:
           chartName: $str:test#pivot#
           radius: $num:2
           pointStyle: $str:rectRounded
-          backgroundColor: $str:#5898d0
-          borderColor: $str:#96caf8
+          backgroundColor: $str:#9aa7b1
+          borderColor: $str:#9aa7b1
           borderWidth: $num:2
           fill: $bool:false
           data:
@@ -122,8 +129,8 @@ widgets:
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
-          valueColor: $str:#c08c8c
-          labelColor: $str:#6d3737
+          valueColor: $str:#172fa6
+          labelColor: $str:#657be6
           averageLatest: $num:1
           data:
             tableRef:
@@ -132,10 +139,13 @@ widgets:
               format:
                 value: avg_temp
                 pivot: devname
+                tsp: null
+          precision: null
+          maxLatency: null
         - label: $str:Humidity
           unit: $str:%
-          valueColor: $str:#7689a7
-          labelColor: $str:#3a5683
+          valueColor: $str:#3a5683
+          labelColor: $str:#7689a7
           averageLatest: $num:1
           data:
             tableRef:
@@ -144,11 +154,14 @@ widgets:
               format:
                 value: avg_humidity
                 pivot: devname
+                tsp: null
+          precision: null
+          maxLatency: null
     layout_id: 4
   - version: 1.0.7
     package_name: widget-image
     chartdata:
-      imageLink: $str:https://5.imimg.com/data5/QU/AU/MY-9380557/dht-11-temperature-humidity-sensor-module.jpg
+      imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
       title:
         text: $str:DHT-11 Sensor
         fontSize: null
@@ -165,13 +178,13 @@ widgets:
     package_name: widget-textbox
     chartdata:
       title:
-        text: "$str:Important:"
+        text: "$str:"
         fontSize: null
         fontWeight: null
         color: null
         backgroundColor: null
       subTitle:
-        text: "$str: Measurement Range DHT-11 sensor"
+        text: "$str: Measurement Range"
         fontSize: null
         fontWeight: null
         color: null
@@ -183,11 +196,11 @@ widgets:
         color: null
         backgroundColor: null
     layout_id: 6
-  - version: 1.4.15
+  - version: 1.4.17
     package_name: widget-mapbox
     chartdata:
       settings:
-        style: light-v11
+        style: $str:streets-v12
         showLegend: null
         follow: $bool:true
         title: null
@@ -202,12 +215,12 @@ widgets:
               heatmap-radius: $num:50
             circle:
               circle-blur: $num:0
-              circle-opacity: $num:02
+              circle-opacity: $num:1
             symbol:
-              text-color: $str:#0e0101
+              text-color: $str:#f0b000
               text-size: $num:20
               icon-image: $str:marker
-              icon-size: $num:01
+              icon-size: $num:04
             line:
               line-width: null
           data:
@@ -217,10 +230,65 @@ widgets:
               format:
                 lon: long
                 lat: lat
-                alt: null
+                alt: $num:01
                 value: "$num:"
                 pivot: devname
-          color: $str:#9b80e5
+          color: $str:#ffc800
           latestValues: null
     layout_id: 7
-background_color: "#e8e7ec"
+  - version: 1.0.10
+    package_name: widget-table
+    chartdata:
+      settings:
+        headerFontSize: 16px
+        headerBackground: "#fcfcfc"
+        rowHeight: 40px
+        title: null
+        subTitle: null
+        rowBorder: null
+      columns:
+        - header: Name
+          width: 120px
+          type: string
+          fontSize: 16px
+          color: grey
+          values:
+            tableRef:
+              tablename: sensordata
+              bufferSize: 500
+              format: devname
+          precision: null
+          fontWeight: null
+          border: null
+          stateMap: null
+        - header: $str:Temperature
+          width: 120px
+          type: number
+          fontWeight: 100
+          precision: 2
+          values:
+            tableRef:
+              tablename: sensordata
+              bufferSize: 500
+              format: temp1
+          fontSize: null
+          color: null
+          border: null
+          stateMap: null
+        - header: $str:Humidity
+          width: 20px
+          type: $str:number
+          values:
+            tableRef:
+              tablename: sensordata
+              bufferSize: 500
+              format: humidity
+          precision: $num:02
+          fontSize: null
+          fontWeight: null
+          color: null
+          border: null
+          stateMap: null
+    layout_id: 8
+background_color: "#e1e4f4"
+text_color: "#46457d"
