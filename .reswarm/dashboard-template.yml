@@ -230,7 +230,7 @@ widgets:
               format:
                 lon: long
                 lat: lat
-                alt: $num:01
+                alt: "$num:"
                 value: "$num:"
                 pivot: devname
           color: $str:#ffc800
