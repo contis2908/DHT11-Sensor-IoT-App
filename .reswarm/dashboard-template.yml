@@ -36,7 +36,7 @@ layout:
     y: 6
     id: 7
 widgets:
-  - version: 1.5.30
+  - version: 1.5.32
     package_name: widget-gauge
     chartdata:
       dataseries:
@@ -120,7 +120,7 @@ widgets:
           order: null
           borderDash: null
     layout_id: 1
-  - version: 1.0.22
+  - version: 1.0.25
     package_name: widget-value
     chartdata:
       settings:
@@ -196,7 +196,7 @@ widgets:
         color: null
         backgroundColor: null
     layout_id: 6
-  - version: 1.4.17
+  - version: 1.4.20
     package_name: widget-mapbox
     chartdata:
       settings:
