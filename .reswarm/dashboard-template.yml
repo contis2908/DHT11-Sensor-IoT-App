@@ -190,7 +190,8 @@ widgets:
         color: null
       body:
         text: $str:Measurement Range for Temperature between 0 and 50 Degree Celcius and Measurement Range for
-          Humidity between 0 and 100
+          Humidity between 0 and 100.          Bei der Luftfeuchtigkeit misst der Sensor im Bereich von 0-100
+          % (2-5 % Genauigkeit) und bei der Temperatur im Bereich von -40 bis 125 °C (0,5 °C Genauigkeit).
         fontSize: null
         fontWeight: null
         color: null
@@ -200,7 +201,7 @@ widgets:
     package_name: widget-mapbox
     chartdata:
       settings:
-        style: $str:streets-v12
+        style: $str:light-v11
         showLegend: null
         follow: $bool:true
         title: null
