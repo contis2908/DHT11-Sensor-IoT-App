@@ -158,7 +158,7 @@ widgets:
           precision: null
           maxLatency: null
     layout_id: 4
-  - version: 1.0.7
+  - version: 1.0.8
     package_name: widget-image
     chartdata:
       imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
@@ -174,7 +174,7 @@ widgets:
         fontWeight: null
         color: null
     layout_id: 5
-  - version: 1.0.9
+  - version: 1.0.12
     package_name: widget-textbox
     chartdata:
       title:

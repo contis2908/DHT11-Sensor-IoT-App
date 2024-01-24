@@ -1,16 +1,23 @@
 # The DHT11-Sensor for Temperature and Humidity
 The DHT11 Sensor consists of a temperature and humidity sensor with a calibrated digital signal output. This App reads the humidity and temperature of a connected DHT-11 Sensor from a RaspberryPi Zero. The measurement data is published together with time and device information to the specified topic and can be subscribed to with the Record Evolution Data Studio. The topic and the publishing interval can be adjusted via the environment variables that are exposed to the app user.
 
+### Dashboarding
+<div style="display:flex;flex-direction:row;flex-wrap:wrap;">
+    <img style="max-width:60%;margin:16px auto;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1706090534/weAsset_2.png">
+</div>
+
+### Measurement Range
 Measurement Range for Temperature between 0 and 50 Degree Celcius <br>
 Measurement Range for Humidity between 0 and 100
 
+### Connecting the Pins with the sensor
 <div style="display:flex;flex-direction:row;flex-wrap:wrap;">
     <img style="max-width:30%; margin:16px;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681996569/Screenshot_2023-04-20_at_15.16.22.png">
     <img style="max-width:30%; margin:16px;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1704889350/Screenshot_2024-01-10_at_13.20.34.png">
     <img style="max-width:30%; margin:16px;height: 100%;" src="https://res.cloudinary.com/dotw7ar1m/image/upload/v1681308879/gpio_pi_zero_dht11.png">
 </div>
 
-### Connecting the Pins with the sensor
+### Pins
 GND - Ground <br>
 Data - GPIO <br>
 VCC - Power
