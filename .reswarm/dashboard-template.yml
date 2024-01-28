@@ -36,7 +36,7 @@ layout:
     y: 6
     id: 7
 widgets:
-  - version: 1.5.32
+  - version: 1.5.33
     package_name: widget-gauge
     chartdata:
       dataseries:
@@ -56,7 +56,7 @@ widgets:
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 500
+              bufferSize: 50
               format:
                 value: temp1
                 pivot: devname
@@ -135,7 +135,7 @@ widgets:
           data:
             tableRef:
               tablename: myagg
-              bufferSize: 500
+              bufferSize: 50
               format:
                 value: avg_temp
                 pivot: devname
@@ -150,7 +150,7 @@ widgets:
           data:
             tableRef:
               tablename: myagg
-              bufferSize: 500
+              bufferSize: 50
               format:
                 value: avg_humidity
                 pivot: devname
@@ -221,13 +221,13 @@ widgets:
               text-color: $str:#f0b000
               text-size: $num:20
               icon-image: $str:marker
-              icon-size: $num:04
+              icon-size: $num:1
             line:
               line-width: null
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 500
+              bufferSize: 50
               format:
                 lon: long
                 lat: lat
@@ -237,7 +237,7 @@ widgets:
           color: $str:#ffc800
           latestValues: null
     layout_id: 7
-  - version: 1.0.10
+  - version: 1.0.12
     package_name: widget-table
     chartdata:
       settings:
@@ -256,7 +256,7 @@ widgets:
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 500
+              bufferSize: 50
               format: devname
           precision: null
           fontWeight: null
@@ -270,7 +270,7 @@ widgets:
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 500
+              bufferSize: 50
               format: temp1
           fontSize: null
           color: null
@@ -282,7 +282,7 @@ widgets:
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 500
+              bufferSize: 50
               format: humidity
           precision: $num:02
           fontSize: null
