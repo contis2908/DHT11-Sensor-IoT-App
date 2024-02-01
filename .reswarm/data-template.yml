@@ -41,7 +41,7 @@ data:
       # frequency: 1 day
       # crontab: * * * 3
       # trigger: onCall /
-      sql: "select max(temp1) as max_temp, avg(temp1) as avg_temp, min(temp1) as min_temp, max(humidity) as max_humidity, avg(humidity) as avg_humidity, min(humidity) as min_humidity from sensordata group by devname"
+      sql: "select max(temp1) as max_temp, min(temp1) as min_temp from sensordata"
       columns:
         - id: max_temp
           name: Maximum Temperature
