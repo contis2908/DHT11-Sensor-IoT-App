@@ -64,7 +64,7 @@ widgets:
           maxLatency: null
       settings:
         title: $str:Live temperature
-        subTitle: $str:Will display the latest value from the cloud database
+        subTitle: $str:Will display the latest value from the cloud database!
     layout_id: 0
   - version: 1.4.15
     package_name: widget-linechart
@@ -74,7 +74,7 @@ widgets:
         yAxisLabel: $str:Temperature
         xAxisLabel: $str:Time
         title: $str:History temperature & humidity
-        subTitle: $str:History of all devices running the app
+        subTitle: $str:History of all devices running the app!
         columnLayout: null
       dataseries:
         - label: $str:Temperature
