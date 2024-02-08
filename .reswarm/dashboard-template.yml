@@ -152,7 +152,7 @@ widgets:
               tablename: myagg
               bufferSize: 50
               format:
-                value: avg_humidity
+                value: avg_hmd
                 pivot: devname
                 tsp: null
           precision: null

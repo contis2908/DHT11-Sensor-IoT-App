@@ -34,39 +34,90 @@ data:
           dataType: numeric
           
 
+  # transforms:
+  #   - tablename: myagg # -> crossbar topic from data servcie: transformed.swarm_key.app_key.tablename
+  #     materialize: true
+  #     schedule: "* * * * *"
+  #     # frequency: 1 day
+  #     # crontab: * * * 3
+  #     # trigger: onCall /
+  #     sql: "select max(temp1) as max_temp, min(temp1) as min_temp from sensordata"
+  #     columns:
+  #       - id: max_temp
+  #         name: Maximum Temperature
+  #         description: Maximum Temperature of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: avg_temp
+  #         name: Average Temperature
+  #         description: Average Temperature of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: min_temp
+  #         name: Minimum Temperature
+  #         description: Minimum Temperature of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: max_humidity
+  #         name: Maximum humidity
+  #         description: Maximum humidity of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: avg_humidity
+  #         name: Average humidity
+  #         description: Average humidity of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: min_humidity
+  #         name: Minimum humidity
+  #         description: Minimum humidity of DHT11 Sensor in Celcius
+  #         dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+  #       - id: devname
+  #         name: Device name
+  #         description: device name
+  #         dataType: string
+
   transforms:
-    - tablename: myagg # -> crossbar topic from data servcie: transformed.swarm_key.app_key.tablename
+    - tablename: myagg
       materialize: true
-      schedule: "* * * * *"
-      # frequency: 1 day
-      # crontab: * * * 3
-      # trigger: onCall /
-      sql: "select max(temp1) as max_temp, min(temp1) as min_temp from sensordata"
+      schedule: "* * * * *" # crontab interface: Minute(1-60) Hour(1-24) MonthDay(1-31) Month(1-12) WeekDay(1-7)
+      sql: |
+        SELECT
+          time_bucket('1 day', tsp) AS daybucket, 
+          max(temp1) AS max_temp,
+          avg(temp1) AS avg_temp, 
+          min(temp1) AS min_temp,
+          max(humidity) AS max_hmd,
+          avg(humidity) AS avg_hmd, 
+          min(humidity) AS min_hmd
+        FROM 
+          sensordata
+        WHERE 
+          tsp > now() - INTERVAL '7 days'
+        GROUP BY
+          daybucket
+        ORDER BY 
+          daybucket desc
       columns:
         - id: max_temp
           name: Maximum Temperature
           description: Maximum Temperature of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+          dataType: numeric # (string, numeric, boolean, timestamp)
         - id: avg_temp
           name: Average Temperature
           description: Average Temperature of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+          dataType: numeric
         - id: min_temp
           name: Minimum Temperature
           description: Minimum Temperature of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
-        - id: max_humidity
+          dataType: numeric
+        - id: max_hmd
           name: Maximum humidity
           description: Maximum humidity of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
-        - id: avg_humidity
+          dataType: numeric # (string, numeric, boolean, timestamp)
+        - id: avg_hmd
           name: Average humidity
           description: Average humidity of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
-        - id: min_humidity
+          dataType: numeric
+        - id: min_hmd
           name: Minimum humidity
           description: Minimum humidity of DHT11 Sensor in Celcius
-          dataType: numeric # ?? may be data type for storing values: numeric, boolean, timestamp? ....
+          dataType: numeric
         - id: devname
           name: Device name
           description: device name
