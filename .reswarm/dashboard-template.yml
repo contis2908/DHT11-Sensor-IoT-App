@@ -36,8 +36,7 @@ layout:
     y: 6
     id: 7
 widgets:
-  - version: 1.5.34
-    package_name: widget-gauge
+  - package_name: widget-gauge
     chartdata:
       dataseries:
         - label: $str:Temperature
@@ -65,6 +64,7 @@ widgets:
       settings:
         title: $str:Live temperature
         subTitle: $str:Will display the latest value from the cloud database!
+    version: 1.5.35
     layout_id: 0
   - version: 1.4.15
     package_name: widget-linechart
@@ -120,8 +120,7 @@ widgets:
           order: null
           borderDash: null
     layout_id: 1
-  - version: 1.0.26
-    package_name: widget-value
+  - package_name: widget-value
     chartdata:
       settings:
         title: $str:Average temperature & humidity
@@ -157,6 +156,7 @@ widgets:
                 tsp: null
           precision: null
           maxLatency: null
+    version: 1.0.27
     layout_id: 4
   - version: 1.0.8
     package_name: widget-image
@@ -197,8 +197,7 @@ widgets:
         color: null
         backgroundColor: null
     layout_id: 6
-  - version: 1.4.20
-    package_name: widget-mapbox
+  - package_name: widget-mapbox
     chartdata:
       settings:
         style: $str:light-v11
@@ -236,6 +235,7 @@ widgets:
                 pivot: devname
           color: $str:#ffc800
           latestValues: null
+    version: 1.4.21
     layout_id: 7
   - version: 1.0.12
     package_name: widget-table
