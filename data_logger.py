@@ -4,7 +4,7 @@ import os
 import asyncio
 from asyncio import sleep
 from datetime import datetime
-from reswarm import Reswarm
+from ironflock import IronFlock
 import random
 
 # Get environment variables
@@ -17,7 +17,7 @@ demo_data = os.environ.get('DEMO_DATA')
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
-rw = Reswarm()
+rw = IronFlock()
 
 async def main():
 
@@ -29,7 +29,7 @@ async def main():
         long = None
         lat = None
         
-        if(device_name == 'PiZero-Niklas'):
+        if device_name == 'PiZero-Niklas':
             long = 13.384971219112401
             lat = 52.52641442016841
         else:
