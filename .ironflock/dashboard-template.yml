@@ -37,130 +37,143 @@ layout:
     id: 7
 widgets:
   - package_name: widget-gauge
-    chartdata:
+    chartconfig:
+      title: $str:Live temperature
+      subTitle: $str:Will display the latest value from the cloud database!
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
           valueColor: $str:#020e27
           sections:
-            - $num:-20
-            - $num:20
-            - $num:80
-            - $num:120
-          backgroundColors:
-            - $str:#c3cbf9
-            - $str:#657be6
-            - $str:#172fa6
-          averageLatest: $num:1
+            sectionLimits:
+              - $num:-20
+              - $num:20
+              - $num:80
+              - $num:120
+            backgroundColors:
+              - $str:#c3cbf9
+              - $str:#657be6
+              - $str:#172fa6
+          advanced:
+            averageLatest: $num:1
+            maxLatency: null
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 50
+              queryParams:
+                limit: 5
+                windowLength: 7
+                nowMinusPeriods: 0
               format:
                 value: temp1
                 pivot: devname
                 tsp: tsp
-          maxLatency: null
-      settings:
-        title: $str:Live temperature
-        subTitle: $str:Will display the latest value from the cloud database!
-    version: 1.5.35
+    version: 1.6.6
     layout_id: 0
-  - version: 1.4.15
+  - version: 1.5.1
     package_name: widget-linechart
-    chartdata:
-      settings:
+    chartconfig:
+      title: $str:History temperature & humidity
+      subTitle: $str:History of all devices running the app!
+      axis:
         timeseries: $bool:true
         yAxisLabel: $str:Temperature
         xAxisLabel: $str:Time
-        title: $str:History temperature & humidity
-        subTitle: $str:History of all devices running the app!
         columnLayout: null
       dataseries:
         - label: $str:Temperature
           type: $str:line
-          showLine: $bool:true
-          chartName: $str:test#pivot#
-          radius: $num:2
-          pointStyle: $str:rectRounded
           backgroundColor: $str:#657be6
           borderColor: $str:#657be6
-          borderWidth: $num:2
-          fill: $bool:false
+          styling:
+            radius: $num:2
+            pointStyle: $str:rectRounded
+            borderWidth: $num:2
+            borderDash: null
+            fill: $bool:false
+          advanced:
+            chartName: $str:test#pivot#
+            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 100
+              queryParams:
+                limit: 100
               format:
                 x: tsp
                 y: temp1
                 r: null
                 pivot: devname
-          order: null
-          borderDash: null
         - label: $str:Humidity
           type: $str:line
-          showLine: $bool:true
-          chartName: $str:test#pivot#
-          radius: $num:2
-          pointStyle: $str:rectRounded
           backgroundColor: $str:#9aa7b1
           borderColor: $str:#9aa7b1
-          borderWidth: $num:2
-          fill: $bool:false
+          styling:
+            radius: $num:2
+            pointStyle: $str:rectRounded
+            borderWidth: $num:2
+            borderDash: null
+            fill: $bool:false
+          advanced:
+            chartName: $str:test#pivot#
+            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 100
+              queryParams:
+                limit: 100
               format:
                 x: tsp
                 y: humidity
                 r: null
                 pivot: devname
-          order: null
-          borderDash: null
     layout_id: 1
   - package_name: widget-value
-    chartdata:
-      settings:
-        title: $str:Average temperature & humidity
-        subTitle: $str:Average values of all devices running the app
+    version: 1.1.4
+    chartconfig:
+      title: $str:Average temperature & humidity
+      subTitle: $str:Average values of all devices running the app
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
-          valueColor: $str:#172fa6
-          labelColor: $str:#657be6
-          averageLatest: $num:1
+          precision: null
+          styling:
+            valueColor: $str:#172fa6
+            labelColor: $str:#657be6
+          advanced:
+            averageLatest: $num:1
+            maxLatency: null
           data:
             tableRef:
               tablename: myagg
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format:
                 value: avg_temp
                 pivot: devname
                 tsp: null
-          precision: null
-          maxLatency: null
         - label: $str:Humidity
           unit: $str:%
-          valueColor: $str:#3a5683
-          labelColor: $str:#7689a7
-          averageLatest: $num:1
+          precision: null
+          styling:
+            valueColor: $str:#3a5683
+            labelColor: $str:#7689a7
+          advanced:
+            averageLatest: $num:1
+            maxLatency: null
           data:
             tableRef:
               tablename: myagg
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format:
                 value: avg_hmd
                 pivot: devname
                 tsp: null
-          precision: null
-          maxLatency: null
-    version: 1.0.27
     layout_id: 4
-  - version: 1.0.8
+  - version: 1.1.1
     package_name: widget-image
-    chartdata:
+    chartconfig:
       imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
       title:
         text: $str:DHT-11 Sensor
@@ -174,9 +187,9 @@ widgets:
         fontWeight: null
         color: null
     layout_id: 5
-  - version: 1.0.12
+  - version: 1.1.1
     package_name: widget-textbox
-    chartdata:
+    chartconfig:
       title:
         text: "$str:"
         fontSize: null
@@ -198,13 +211,13 @@ widgets:
         backgroundColor: null
     layout_id: 6
   - package_name: widget-mapbox
-    chartdata:
-      settings:
-        style: $str:light-v11
-        showLegend: null
-        follow: $bool:true
-        title: null
-        subTitle: null
+    version: 1.5.1
+    chartconfig:
+      style: $str:light-v11
+      showLegend: null
+      follow: $bool:true
+      title: null
+      subTitle: null
       dataseries:
         - label: $str:Sensor GPS position
           type: $str:symbol
@@ -226,7 +239,8 @@ widgets:
           data:
             tableRef:
               tablename: sensordata
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format:
                 lon: long
                 lat: lat
@@ -235,61 +249,66 @@ widgets:
                 pivot: devname
           color: $str:#ffc800
           latestValues: null
-    version: 1.4.21
     layout_id: 7
-  - version: 1.0.12
+  - version: 1.1.2
     package_name: widget-table
-    chartdata:
-      settings:
+    chartconfig:
+      title: null
+      subTitle: null
+      styling:
         headerFontSize: 16px
         headerBackground: "#fcfcfc"
         rowHeight: 40px
-        title: null
-        subTitle: null
         rowBorder: null
       columns:
         - header: Name
-          width: 120px
           type: string
-          fontSize: 16px
-          color: grey
+          styling:
+            width: 120px
+            fontSize: 16px
+            color: grey
+            precision: null
+            fontWeight: null
+            border: null
+            stateMap: null
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format: devname
-          precision: null
-          fontWeight: null
-          border: null
-          stateMap: null
         - header: $str:Temperature
-          width: 120px
           type: number
-          fontWeight: 100
-          precision: 2
+          styling:
+            width: 120px
+            fontWeight: 100
+            precision: 2
+            fontSize: null
+            color: null
+            border: null
+            stateMap: null
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format: temp1
-          fontSize: null
-          color: null
-          border: null
-          stateMap: null
         - header: $str:Humidity
-          width: 20px
           type: $str:number
+          styling:
+            width: 20px
+            precision: $num:02
+            fontSize: null
+            fontWeight: null
+            color: null
+            border: null
+            stateMap: null
           values:
             tableRef:
               tablename: sensordata
-              bufferSize: 50
+              queryParams:
+                limit: 50
               format: humidity
-          precision: $num:02
-          fontSize: null
-          fontWeight: null
-          color: null
-          border: null
-          stateMap: null
     layout_id: 8
 background_color: "#e1e4f4"
 text_color: "#46457d"
