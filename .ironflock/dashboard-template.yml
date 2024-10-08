@@ -56,7 +56,6 @@ widgets:
               - $str:#172fa6
           advanced:
             averageLatest: $num:1
-            maxLatency: null
           data:
             tableRef:
               tablename: sensordata
@@ -79,7 +78,6 @@ widgets:
         timeseries: $bool:true
         yAxisLabel: $str:Temperature
         xAxisLabel: $str:Time
-        columnLayout: null
       dataseries:
         - label: $str:Temperature
           type: $str:line
@@ -89,11 +87,9 @@ widgets:
             radius: $num:2
             pointStyle: $str:rectRounded
             borderWidth: $num:2
-            borderDash: null
             fill: $bool:false
           advanced:
             chartName: $str:test#pivot#
-            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -102,7 +98,6 @@ widgets:
               format:
                 x: tsp
                 y: temp1
-                r: null
                 pivot: devname
         - label: $str:Humidity
           type: $str:line
@@ -112,11 +107,9 @@ widgets:
             radius: $num:2
             pointStyle: $str:rectRounded
             borderWidth: $num:2
-            borderDash: null
             fill: $bool:false
           advanced:
             chartName: $str:test#pivot#
-            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -125,7 +118,6 @@ widgets:
               format:
                 x: tsp
                 y: humidity
-                r: null
                 pivot: devname
     layout_id: 1
   - package_name: widget-value
@@ -136,13 +128,11 @@ widgets:
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
-          precision: null
           styling:
             valueColor: $str:#172fa6
             labelColor: $str:#657be6
           advanced:
             averageLatest: $num:1
-            maxLatency: null
           data:
             tableRef:
               tablename: myagg
@@ -151,16 +141,13 @@ widgets:
               format:
                 value: avg_temp
                 pivot: devname
-                tsp: null
         - label: $str:Humidity
           unit: $str:%
-          precision: null
           styling:
             valueColor: $str:#3a5683
             labelColor: $str:#7689a7
           advanced:
             averageLatest: $num:1
-            maxLatency: null
           data:
             tableRef:
               tablename: myagg
@@ -169,7 +156,6 @@ widgets:
               format:
                 value: avg_hmd
                 pivot: devname
-                tsp: null
     layout_id: 4
   - version: 1.1.1
     package_name: widget-image
@@ -177,54 +163,27 @@ widgets:
       imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
       title:
         text: $str:DHT-11 Sensor
-        fontSize: null
-        fontWeight: null
-        color: null
-        backgroundColor: null
-      subTitle:
-        text: null
-        fontSize: null
-        fontWeight: null
-        color: null
     layout_id: 5
   - version: 1.1.1
     package_name: widget-textbox
     chartconfig:
-      title:
-        text: "$str:"
-        fontSize: null
-        fontWeight: null
-        color: null
-        backgroundColor: null
       subTitle:
         text: "$str: Measurement Range"
-        fontSize: null
-        fontWeight: null
-        color: null
       body:
         text: $str:Measurement Range for Temperature between 0 and 50 Degree Celcius and Measurement Range for
           Humidity between 0 and 100.          Bei der Luftfeuchtigkeit misst der Sensor im Bereich von 0-100
           % (2-5 % Genauigkeit) und bei der Temperatur im Bereich von -40 bis 125 °C (0,5 °C Genauigkeit).
-        fontSize: null
-        fontWeight: null
-        color: null
-        backgroundColor: null
     layout_id: 6
   - package_name: widget-mapbox
     version: 1.5.1
     chartconfig:
       style: $str:light-v11
-      showLegend: null
       follow: $bool:true
-      title: null
-      subTitle: null
       dataseries:
         - label: $str:Sensor GPS position
           type: $str:symbol
           config:
             heatmap:
-              heatmap-intensity: "$num:"
-              heatmap-opacity: "$num:"
               heatmap-radius: $num:50
             circle:
               circle-blur: $num:0
@@ -234,8 +193,6 @@ widgets:
               text-size: $num:20
               icon-image: $str:marker
               icon-size: $num:1
-            line:
-              line-width: null
           data:
             tableRef:
               tablename: sensordata
@@ -244,33 +201,23 @@ widgets:
               format:
                 lon: long
                 lat: lat
-                alt: "$num:"
-                value: "$num:"
                 pivot: devname
           color: $str:#ffc800
-          latestValues: null
     layout_id: 7
   - version: 1.1.2
     package_name: widget-table
     chartconfig:
-      title: null
-      subTitle: null
       styling:
-        headerFontSize: 16px
-        headerBackground: "#fcfcfc"
-        rowHeight: 40px
-        rowBorder: null
+        headerFontSize: $str:16px
+        headerBackground: $str:#fcfcfc
+        rowHeight: $str:40px
       columns:
-        - header: Name
-          type: string
+        - header: $str:Name
+          type: $str:string
           styling:
-            width: 120px
-            fontSize: 16px
-            color: grey
-            precision: null
-            fontWeight: null
-            border: null
-            stateMap: null
+            width: $str:120px
+            fontSize: $str:16px
+            color: $str:grey
           values:
             tableRef:
               tablename: sensordata
@@ -278,15 +225,11 @@ widgets:
                 limit: 50
               format: devname
         - header: $str:Temperature
-          type: number
+          type: $str:number
           styling:
-            width: 120px
-            fontWeight: 100
-            precision: 2
-            fontSize: null
-            color: null
-            border: null
-            stateMap: null
+            width: $str:120px
+            fontWeight: $num:100
+            precision: $num:2
           values:
             tableRef:
               tablename: sensordata
@@ -296,13 +239,8 @@ widgets:
         - header: $str:Humidity
           type: $str:number
           styling:
-            width: 20px
+            width: $str:20px
             precision: $num:02
-            fontSize: null
-            fontWeight: null
-            color: null
-            border: null
-            stateMap: null
           values:
             tableRef:
               tablename: sensordata
