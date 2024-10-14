@@ -67,9 +67,9 @@ widgets:
                 value: temp1
                 pivot: devname
                 tsp: tsp
-    version: 1.6.6
+    version: 1.6.8
     layout_id: 0
-  - version: 1.5.1
+  - version: 1.5.4
     package_name: widget-linechart
     chartconfig:
       title: $str:History temperature & humidity
@@ -121,7 +121,7 @@ widgets:
                 pivot: devname
     layout_id: 1
   - package_name: widget-value
-    version: 1.1.4
+    version: 1.1.5
     chartconfig:
       title: $str:Average temperature & humidity
       subTitle: $str:Average values of all devices running the app
@@ -157,14 +157,14 @@ widgets:
                 value: avg_hmd
                 pivot: devname
     layout_id: 4
-  - version: 1.1.1
+  - version: 1.1.2
     package_name: widget-image
     chartconfig:
       imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
       title:
         text: $str:DHT-11 Sensor
     layout_id: 5
-  - version: 1.1.1
+  - version: 1.1.2
     package_name: widget-textbox
     chartconfig:
       subTitle:
@@ -175,7 +175,6 @@ widgets:
           % (2-5 % Genauigkeit) und bei der Temperatur im Bereich von -40 bis 125 °C (0,5 °C Genauigkeit).
     layout_id: 6
   - package_name: widget-mapbox
-    version: 1.5.1
     chartconfig:
       style: $str:light-v11
       follow: $bool:true
@@ -203,8 +202,10 @@ widgets:
                 lat: lat
                 pivot: devname
           color: $str:#ffc800
+      showLegend: $bool:false
+    version: 1.5.2
     layout_id: 7
-  - version: 1.1.2
+  - version: 1.1.3
     package_name: widget-table
     chartconfig:
       styling:
