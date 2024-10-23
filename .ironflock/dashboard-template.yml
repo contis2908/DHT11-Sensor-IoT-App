@@ -69,8 +69,7 @@ widgets:
                 tsp: tsp
     version: 1.6.9
     layout_id: 0
-  - version: 1.5.5
-    package_name: widget-linechart
+  - package_name: widget-linechart
     chartconfig:
       title: $str:History temperature & humidity
       subTitle: $str:History of all devices running the app!
@@ -119,6 +118,7 @@ widgets:
                 x: tsp
                 y: humidity
                 pivot: devname
+    version: 1.5.5
     layout_id: 1
   - package_name: widget-value
     version: 1.1.6
