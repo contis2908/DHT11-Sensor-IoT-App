@@ -17,8 +17,6 @@ demo_data = os.environ.get('DEMO_DATA')
 DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
-rw = IronFlock()
-
 async def main():
 
     while True:
@@ -62,7 +60,7 @@ async def main():
 
             try:
                 # result = await rw.publish(topic_pub, data)
-                await rw.publish_to_table("sensordata", data)
+                await ironflock.publish_to_table("sensordata", data)
                 print(f'Data was published: {data}')
             except Exception as e:
                 print("Error: publish ... ", e)
@@ -72,13 +70,10 @@ async def main():
             print("Error: No value for Humidity and Temperature - skip publish");
         
         await sleep(loop_time)
-
    
 if __name__ == "__main__":
-    # run the main coroutine
-    asyncio.get_event_loop().create_task(main())
-    # run the reswarm component
-    rw.run()
+    ironflock = IronFlock(mainFunc=main)
+    ironflock.run()
 
 
 
