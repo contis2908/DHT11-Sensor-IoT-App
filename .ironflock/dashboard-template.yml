@@ -43,17 +43,13 @@ widgets:
       dataseries:
         - label: $str:Temperature
           unit: $str:°C
-          valueColor: $str:#020e27
           sections:
             sectionLimits:
               - $num:-20
               - $num:20
               - $num:80
               - $num:120
-            backgroundColors:
-              - $str:#c3cbf9
-              - $str:#657be6
-              - $str:#172fa6
+            backgroundColors: []
           advanced:
             averageLatest: $num:1
           data:
@@ -67,7 +63,8 @@ widgets:
                 value: temp1
                 pivot: devname
                 tsp: tsp
-    version: 1.7.4
+          precision: $num:1
+    version: 1.7.10
     layout_id: 0
   - package_name: widget-linechart
     chartconfig:
@@ -96,8 +93,8 @@ widgets:
                 windowLength: 3
                 nowMinusPeriods: 0
                 timeRange:
-                  - 2025-06-18T21:28:00.000Z
-                  - 2025-06-18T21:31:00.000Z
+                  - 2025-06-27T08:13:12.965Z
+                  - 2025-06-27T08:16:12.965Z
               format:
                 x: tsp
                 y: temp1
@@ -116,14 +113,20 @@ widgets:
               tablename: sensordata
               queryParams:
                 limit: 100
+                windowPeriod: minute
+                windowLength: 3
+                nowMinusPeriods: 0
+                timeRange:
+                  - 2025-06-27T08:13:14.851Z
+                  - 2025-06-27T08:16:14.851Z
               format:
                 x: tsp
                 y: humidity
                 pivot: devname
-    version: 1.6.8
+    version: 1.6.15
     layout_id: 1
   - package_name: widget-value
-    version: 1.1.10
+    version: 1.1.13
     chartconfig:
       title: $str:Average temperature & humidity
       subTitle: $str:Average values of all devices running the app
@@ -159,14 +162,14 @@ widgets:
                 value: avg_hmd
                 pivot: devname
     layout_id: 4
-  - version: 1.1.6
+  - version: 1.1.7
     package_name: widget-image
     chartconfig:
       imageLink: $str:https://res.cloudinary.com/dotw7ar1m/image/upload/v1705056728/Screenshot_2024-01-10_at_13.20.34.png
       title:
         text: $str:DHT-11 Sensor
     layout_id: 5
-  - version: 1.1.4
+  - version: 1.1.5
     package_name: widget-textbox
     chartconfig:
       subTitle:
@@ -205,7 +208,7 @@ widgets:
                 pivot: devname
           color: $str:#ffc800
       showLegend: $bool:false
-    version: 1.5.5
+    version: 1.5.7
     layout_id: 7
   - package_name: widget-table
     chartconfig:
@@ -224,7 +227,8 @@ widgets:
               tablename: sensordata
               queryParams:
                 limit: 50
-              format: devname
+              format: 
+               value: devname
         - header: $str:Temperature
           type: $str:number
           styling:
@@ -236,7 +240,8 @@ widgets:
               tablename: sensordata
               queryParams:
                 limit: 50
-              format: temp1
+              format: 
+                value: temp1
         - header: $str:Humidity
           type: $str:number
           styling:
@@ -247,8 +252,9 @@ widgets:
               tablename: sensordata
               queryParams:
                 limit: 50
-              format: humidity
-    version: 1.1.6
+              format: 
+                value: humidity
+    version: 1.1.10
     layout_id: 8
 background_color: "#e1e4f4"
 text_color: "#46457d"
