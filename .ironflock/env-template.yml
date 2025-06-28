@@ -12,7 +12,7 @@ TOPIC_PUB:
     type: text
     optional: true
 LOOP_TIME:
-    defaultValue: 5
+    defaultValue: 2
     label: Interval of measurment in seconds
     type: numeric
     secret: false

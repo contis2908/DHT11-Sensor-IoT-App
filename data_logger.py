@@ -3,7 +3,7 @@ import time
 import os
 import asyncio
 from asyncio import sleep
-from datetime import datetime
+from datetime import datetime, timezone
 from ironflock import IronFlock
 import random
 
@@ -46,7 +46,7 @@ async def main():
                 print("Error: Problem reading data from sensor... ", e)
 
         if humidity is not None and temperature is not None or randomHumi is not None and randomTemp is not None:
-            now = datetime.utcfromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+            now = datetime.now(timezone.utc).isoformat()
             # print(f"{now} NOW Publish - Temp: {temperature:0.2f}C  Humidity: {humidity:0.2f}% Topic: {topic_pub}")
             data = {
                 "timestamp": now,

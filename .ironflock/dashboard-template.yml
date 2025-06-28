@@ -74,6 +74,9 @@ widgets:
         timeseries: $bool:true
         yAxisLabel: $str:Temperature
         xAxisLabel: $str:Time
+        xAxisZoom: $bool:false
+        columnLayout: $bool:false
+        yAxisScaling: $bool:false
       dataseries:
         - label: $str:Temperature
           type: $str:line
@@ -83,21 +86,15 @@ widgets:
             borderWidth: $num:2
             fill: $bool:false
           advanced:
-            chartName: $str:a
+            chartName: $str:Temperature
           data:
             tableRef:
               tablename: sensordata
               queryParams:
                 limit: 500
-                windowPeriod: minute
-                windowLength: 3
-                nowMinusPeriods: 0
-                timeRange:
-                  - 2025-06-27T08:13:12.965Z
-                  - 2025-06-27T08:16:12.965Z
               format:
-                x: tsp
                 y: temp1
+                x: tsp
                 pivot: devname
         - label: $str:Humidity
           type: $str:line
@@ -107,18 +104,12 @@ widgets:
             borderWidth: $num:2
             fill: $bool:false
           advanced:
-            chartName: $str:a
+            chartName: $str:Humidity
           data:
             tableRef:
               tablename: sensordata
               queryParams:
-                limit: 100
-                windowPeriod: minute
-                windowLength: 3
-                nowMinusPeriods: 0
-                timeRange:
-                  - 2025-06-27T08:13:14.851Z
-                  - 2025-06-27T08:16:14.851Z
+                limit: 500
               format:
                 x: tsp
                 y: humidity
