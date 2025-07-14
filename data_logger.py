@@ -18,7 +18,9 @@ DHT_SENSOR = Adafruit_DHT.DHT11
 DHT_PIN = 4
 
 async def main():
-
+    print('STARTING MAIN')
+    if demo_data:
+        print("Use demo_data ", demo_data)
     while True:
         randomTemp = None
         randomHumi = None
@@ -35,11 +37,9 @@ async def main():
             lat = 50.112264 
 
         if demo_data:
-            print("Use demo_data ", demo_data)
             randomTemp = random.randint(20, 30)
             randomHumi = random.randint(40, 80)
         else:
-            print("Use sensor data ", demo_data)
             try:
                 humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
             except Exception as e:
