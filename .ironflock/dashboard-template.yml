@@ -83,10 +83,12 @@ widgets:
           styling:
             radius: $num:2
             pointStyle: $str:none
-            borderWidth: $num:2
+            borderWidth: $num:1
             fill: $bool:false
+            borderDash: null
           advanced:
             chartName: $str:Temperature
+            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -96,15 +98,20 @@ widgets:
                 y: temp1
                 x: tsp
                 pivot: devname
+                r: $num:10
+          backgroundColor: ""
+          borderColor: ""
         - label: $str:Humidity
           type: $str:line
           styling:
             radius: $num:2
             pointStyle: $str:none
-            borderWidth: $num:2
+            borderWidth: $num:1
             fill: $bool:false
+            borderDash: null
           advanced:
             chartName: $str:Humidity
+            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -114,6 +121,9 @@ widgets:
                 x: tsp
                 y: humidity
                 pivot: devname
+                r: null
+          backgroundColor: ""
+          borderColor: ""
     version: 1.6.15
     layout_id: 1
   - package_name: widget-value
