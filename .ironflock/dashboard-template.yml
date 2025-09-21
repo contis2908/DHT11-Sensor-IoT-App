@@ -1,72 +1,5 @@
 name: DHT11-Temp-HMD-Sens
-layout:
-  gridLayout:
-    - w: 3
-      h: 6
-      x: 0
-      y: 0
-      id: 5
-    - w: 3
-      h: 6
-      x: 3
-      y: 0
-      id: 6
-    - w: 6
-      h: 6
-      x: 6
-      y: 0
-      id: 0
-    - w: 4
-      h: 6
-      x: 0
-      y: 6
-      id: 4
-    - w: 8
-      h: 6
-      x: 4
-      y: 6
-      id: 1
-    - w: 6
-      h: 6
-      x: 0
-      y: 12
-      id: 8
-    - w: 6
-      h: 6
-      x: 6
-      y: 12
-      id: 7
 widgets:
-  - package_name: widget-gauge
-    chartconfig:
-      title: $str:Live temperature
-      subTitle: $str:Will display the latest value from the cloud database!
-      dataseries:
-        - label: $str:Temperature
-          unit: $str:°C
-          sections:
-            sectionLimits:
-              - $num:-20
-              - $num:20
-              - $num:80
-              - $num:120
-            backgroundColors: []
-          advanced:
-            averageLatest: $num:1
-          data:
-            tableRef:
-              tablename: sensordata
-              queryParams:
-                limit: 50
-                windowLength: 5
-                nowMinusPeriods: 0
-              format:
-                value: temp1
-                tsp: tsp
-                pivot: devname
-          precision: $num:1
-    version: 1.7.12
-    layout_id: 0
   - package_name: widget-linechart
     chartconfig:
       title: $str:History temperature & humidity
@@ -82,14 +15,11 @@ widgets:
         - label: $str:Temperature
           type: $str:line
           styling:
-            radius: $num:2
             pointStyle: $str:none
             borderWidth: $num:1
             fill: $bool:false
-            borderDash: null
           advanced:
             chartName: $str:Temperature
-            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -105,14 +35,11 @@ widgets:
         - label: $str:Humidity
           type: $str:line
           styling:
-            radius: $num:2
             pointStyle: $str:none
             borderWidth: $num:1
             fill: $bool:false
-            borderDash: null
           advanced:
             chartName: $str:Humidity
-            drawOrder: null
           data:
             tableRef:
               tablename: sensordata
@@ -125,10 +52,10 @@ widgets:
                 r: null
           backgroundColor: ""
           borderColor: ""
-    version: 1.6.15
+    version: 1.6.19
     layout_id: 1
   - package_name: widget-value
-    version: 1.1.13
+    version: 1.1.17
     chartconfig:
       title: $str:Average temperature & humidity
       subTitle: $str:Average values of all devices running the app
@@ -171,7 +98,7 @@ widgets:
       title:
         text: $str:DHT-11 Sensor
     layout_id: 5
-  - version: 1.1.5
+  - version: 1.1.7
     package_name: widget-textbox
     chartconfig:
       subTitle:
@@ -187,7 +114,7 @@ widgets:
       follow: $bool:true
       dataseries:
         - label: $str:Sensor GPS position
-          type: $str:symbol
+          type: $str:heatmap
           config:
             heatmap:
               heatmap-radius: $num:50
@@ -208,9 +135,23 @@ widgets:
                 lon: long
                 lat: lat
                 pivot: devname
+                alt: null
+                value: temp1
           color: $str:#ffc800
+          latestValues: $num:10
+          symbol:
+            text-color: ""
+            text-size: null
+            icon-image: null
+            icon-size: null
+          heatmap:
+            heatmap-intensity: $num:2
+            heatmap-opacity: $num:0.6
+            heatmap-radius: $num:111
       showLegend: $bool:false
-    version: 1.5.7
+      title: null
+      subTitle: null
+    version: 1.5.11
     layout_id: 7
   - package_name: widget-table
     chartconfig:
@@ -256,301 +197,325 @@ widgets:
                 limit: 50
               format:
                 value: humidity
-    version: 1.1.10
+    version: 1.1.14
     layout_id: 8
-background_color: "#e1e4f4"
-text_color: "#46457d"
+  - package_name: widget-gauge
+    chartconfig:
+      title: $str:Live temperature
+      subTitle: $str:Will display the latest value from the cloud database!
+      dataseries:
+        - label: $str:Temperature
+          unit: $str:°C
+          sections:
+            sectionLimits:
+              - $num:-20
+              - $num:20
+              - $num:80
+              - $num:120
+            backgroundColors: []
+          advanced:
+            averageLatest: $num:1
+          data:
+            tableRef:
+              tablename: sensordata
+              queryParams:
+                limit: 50
+                windowLength: 5
+                nowMinusPeriods: 0
+              format:
+                value: temp1
+                tsp: tsp
+                pivot: devname
+          precision: $num:1
+    version: 1.7.15
+    layout_id: 10
+  - chartconfig:
+      axis:
+        timeseries: $bool:true
+        xAxisLabel: $str:Time
+        xAxisZoom: null
+        yAxisLabel: $str:Temperature
+        yAxisScaling: null
+        columnLayout: $bool:true
+      dataseries:
+        - label: $str:Demo Bubble
+          type: $str:scatter
+          styling:
+            borderWidth: $num:2
+            fill: null
+          advanced:
+            drawOrder: $num:1
+          data:
+            - x: $str:2023-11-05T12:47:52.351152+00:00
+              y: $str:40
+              r: $num:10
+            - x: $str:2023-11-07T12:47:52.351152+00:00
+              y: $str:40
+              r: $num:70
+            - x: $str:2023-11-11T22:47:52.351152+00:00
+              y: $str:32
+              r: $num:27
+        - label: $str:Demo Bar
+          type: $str:bar
+          styling:
+            borderWidth: $num:2
+            pointStyle: $str:circle
+            fill: null
+          advanced:
+            drawOrder: $num:2
+          data:
+            - x: $str:2023-11-04T22:47:52.351152+00:00
+              y: $str:28
+            - x: $str:2023-11-05T22:47:52.351152+00:00
+              y: $str:10
+            - x: $str:2023-11-07T22:47:52.351152+00:00
+              y: $str:59
+            - x: $str:2023-11-10T22:47:52.351152+00:00
+              y: $str:42
+        - label: $str:Demo Line
+          type: $str:line
+          styling:
+            fill: null
+            borderWidth: $num:2
+            borderDash: $str:dashed
+            pointStyle: $str:circle
+          advanced:
+            drawOrder: $num:3
+          data:
+            - x: $str:2023-11-03T22:47:52.351152+00:00
+              y: $str:20
+            - x: $str:2023-11-06T09:47:52.351152+00:00
+              y: $str:40
+            - x: $str:2023-11-08T09:47:52.351152+00:00
+              y: $str:45
+            - x: $str:2023-11-11T22:47:52.351152+00:00
+              y: $str:20
+    version: 1.6.19
+    package_name: widget-linechart
+    layout_id: 2fa9e052-c0d3-4379-a8a3-b91a671b0567
+  - package_name: widget-linechart
+    chartconfig:
+      axis:
+        timeseries: $bool:true
+        xAxisLabel: $str:Time
+        yAxisLabel: $str:Temperature
+        columnLayout: $bool:true
+      dataseries:
+        - label: "$str:"
+          type: $str:line
+          styling:
+            borderWidth: $num:2
+            borderDash: $str:dashed
+            pointStyle: $str:circle
+          advanced:
+            drawOrder: $num:3
+            chartName: $str:Temperature
+          data:
+            tableRef:
+              tablename: sensordata
+              queryParams:
+                limit: 100
+                filterAnd:
+                  - column: devname
+                    operator: =
+                    value: "1"
+                    dataType: string
+                    useRoute: true
+                windowPeriod: null
+                windowLength: 5
+                nowMinusPeriods: 0
+              format:
+                x: tsp
+                y: temp1
+                r: $num:10
+                pivot: null
+          backgroundColor: $str:#d24848
+          borderColor: $str:#d75454
+        - label: "$str:"
+          type: $str:bar
+          backgroundColor: $str:#9fa8da
+          borderColor: $str:#7986cb
+          data:
+            tableRef:
+              tablename: sensordata
+              queryParams:
+                limit: 500
+                filterAnd:
+                  - column: devname
+                    operator: =
+                    value: "1"
+                    dataType: string
+                    useRoute: true
+                windowPeriod: null
+                windowLength: 5
+                nowMinusPeriods: 0
+              format:
+                x: tsp
+                y: humidity
+                r: null
+                pivot: null
+          styling: {}
+          advanced:
+            chartName: $str:Humidity
+            drawOrder: $num:4
+      title:
+        valueRef:
+          tablename: sensordata
+          column: devname
+          queryParams:
+            filterAnd:
+              - column: devname
+                operator: =
+                value: "1"
+                dataType: string
+                useRoute: true
+            limit: 1
+      subTitle: "$str:"
+    version: 1.6.19
+    layout_id: 5bbaf1fd-0a03-4946-a44f-5fd264bee5aa
+  - package_name: widget-sidenav
+    chartconfig:
+      title: $str:Cities
+      style:
+        fontSize: $num:16
+        fontWeight: $num:400
+      navItems:
+        - label: $str:Overview
+          iconName: $str:home
+          route: "$str:"
+        - label: $str:Stockholm
+          iconName: $str:image
+          route: $str:/Stockholm
+        - label: $str:Frankfurt
+          iconName: $str:image
+          route: $str:/frankfurt
+      route: null
+    version: 1.0.4
+    layout_id: 81e4db24-5efe-4caa-9802-3b10c515788a
+  - package_name: widget-sidenav
+    chartconfig:
+      title: $str:Cities
+      style:
+        fontSize: $num:16
+        fontWeight: $num:400
+      navItems:
+        - label: $str:Frankfurt
+          iconName: $str:image
+          route: $str:/frankfurt
+        - label: $str:Stockholm
+          iconName: $str:image
+          route: $str:/stockholm
+      route: null
+    version: 1.0.4
+    layout_id: 9e9214d7-46fe-4be3-8e15-5a12719b08c7
+  - chartconfig:
+      axis:
+        timeseries: $bool:true
+        xAxisLabel: $str:Time
+        xAxisZoom: null
+        yAxisLabel: $str:Temperature
+        yAxisScaling: null
+        columnLayout: $bool:true
+      dataseries:
+        - label: $str:Demo Bubble
+          type: $str:scatter
+          styling:
+            borderWidth: $num:2
+            fill: null
+          advanced:
+            drawOrder: $num:1
+          data:
+            - x: $str:2023-11-05T12:47:52.351152+00:00
+              y: $str:40
+              r: $num:10
+            - x: $str:2023-11-07T12:47:52.351152+00:00
+              y: $str:40
+              r: $num:70
+            - x: $str:2023-11-11T22:47:52.351152+00:00
+              y: $str:32
+              r: $num:27
+        - label: $str:Demo Bar
+          type: $str:bar
+          styling:
+            borderWidth: $num:2
+            pointStyle: $str:circle
+            fill: null
+          advanced:
+            drawOrder: $num:2
+          data:
+            - x: $str:2023-11-04T22:47:52.351152+00:00
+              y: $str:28
+            - x: $str:2023-11-05T22:47:52.351152+00:00
+              y: $str:10
+            - x: $str:2023-11-07T22:47:52.351152+00:00
+              y: $str:59
+            - x: $str:2023-11-10T22:47:52.351152+00:00
+              y: $str:42
+        - label: $str:Demo Line
+          type: $str:line
+          styling:
+            fill: null
+            borderWidth: $num:2
+            borderDash: $str:dashed
+            pointStyle: $str:circle
+          advanced:
+            drawOrder: $num:3
+          data:
+            - x: $str:2023-11-03T22:47:52.351152+00:00
+              y: $str:20
+            - x: $str:2023-11-06T09:47:52.351152+00:00
+              y: $str:40
+            - x: $str:2023-11-08T09:47:52.351152+00:00
+              y: $str:45
+            - x: $str:2023-11-11T22:47:52.351152+00:00
+              y: $str:20
+    version: 1.6.19
+    package_name: widget-linechart
+    layout_id: de45bab4-7e3e-427d-9a22-368e69e46fe9
+layout:
+  gridLayout:
+    - w: 2
+      h: 16
+      x: 0
+      y: 0
+      id: 81e4db24-5efe-4caa-9802-3b10c515788a
+    - w: 10
+      h: 6
+      x: 2
+      y: 0
+      id: "10"
+    - w: 4
+      h: 5
+      x: 2
+      y: 6
+      id: "6"
+    - w: 6
+      h: 10
+      x: 6
+      y: 6
+      id: "7"
+    - w: 4
+      h: 5
+      x: 2
+      y: 11
+      id: "4"
+  subRoutes:
+    "*":
+      gridLayout:
+        - w: 2
+          h: 16
+          x: 0
+          y: 0
+          id: 81e4db24-5efe-4caa-9802-3b10c515788a
+        - w: 10
+          h: 16
+          x: 2
+          y: 0
+          id: 5bbaf1fd-0a03-4946-a44f-5fd264bee5aa
 style:
   theme:
     theme_name: infographic
-    theme_object:
-      color:
-        - "#c1232b"
-        - "#27727b"
-        - "#fcce10"
-        - "#e87c25"
-        - "#b5c334"
-        - "#fe8463"
-        - "#9bca63"
-        - "#fad860"
-        - "#f3a43b"
-        - "#60c0dd"
-        - "#d7504b"
-        - "#c6e579"
-        - "#f4e001"
-        - "#f0805a"
-        - "#26c0c0"
-      backgroundColor: rgba(0,0,0,0)
-      textStyle: {}
-      title:
-        textStyle:
-          color: "#27727b"
-        subtextStyle:
-          color: "#aaaaaa"
-      line:
-        itemStyle:
-          borderWidth: 1
-        lineStyle:
-          width: "3"
-        symbolSize: "5"
-        symbol: emptyCircle
-        smooth: false
-      radar:
-        itemStyle:
-          borderWidth: 1
-        lineStyle:
-          width: "3"
-        symbolSize: "5"
-        symbol: emptyCircle
-        smooth: false
-      bar:
-        itemStyle:
-          barBorderWidth: 0
-          barBorderColor: "#ccc"
-      pie:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      scatter:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      boxplot:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      parallel:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      sankey:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      funnel:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      gauge:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-      candlestick:
-        itemStyle:
-          color: "#c1232b"
-          color0: "#b5c334"
-          borderColor: "#c1232b"
-          borderColor0: "#b5c334"
-          borderWidth: 1
-      graph:
-        itemStyle:
-          borderWidth: 0
-          borderColor: "#ccc"
-        lineStyle:
-          width: 1
-          color: "#aaaaaa"
-        symbolSize: "5"
-        symbol: emptyCircle
-        smooth: false
-        color:
-          - "#c1232b"
-          - "#27727b"
-          - "#fcce10"
-          - "#e87c25"
-          - "#b5c334"
-          - "#fe8463"
-          - "#9bca63"
-          - "#fad860"
-          - "#f3a43b"
-          - "#60c0dd"
-          - "#d7504b"
-          - "#c6e579"
-          - "#f4e001"
-          - "#f0805a"
-          - "#26c0c0"
-        label:
-          color: "#eeeeee"
-      map:
-        itemStyle:
-          areaColor: "#dddddd"
-          borderColor: "#eeeeee"
-          borderWidth: 0.5
-        label:
-          color: "#c1232b"
-        emphasis:
-          itemStyle:
-            areaColor: "#fe994e"
-            borderColor: "#444"
-            borderWidth: 1
-          label:
-            color: rgb(100,0,0)
-      geo:
-        itemStyle:
-          areaColor: "#dddddd"
-          borderColor: "#eeeeee"
-          borderWidth: 0.5
-        label:
-          color: "#c1232b"
-        emphasis:
-          itemStyle:
-            areaColor: "#fe994e"
-            borderColor: "#444"
-            borderWidth: 1
-          label:
-            color: rgb(100,0,0)
-      categoryAxis:
-        axisLine:
-          show: true
-          lineStyle:
-            color: "#27727b"
-        axisTick:
-          show: true
-          lineStyle:
-            color: "#27727b"
-        axisLabel:
-          show: true
-          color: "#333"
-        splitLine:
-          show: false
-          lineStyle:
-            color:
-              - "#ccc"
-        splitArea:
-          show: false
-          areaStyle:
-            color:
-              - rgba(250,250,250,0.3)
-              - rgba(200,200,200,0.3)
-      valueAxis:
-        axisLine:
-          show: false
-          lineStyle:
-            color: "#333"
-        axisTick:
-          show: false
-          lineStyle:
-            color: "#333"
-        axisLabel:
-          show: true
-          color: "#333"
-        splitLine:
-          show: true
-          lineStyle:
-            color:
-              - "#ccc"
-        splitArea:
-          show: false
-          areaStyle:
-            color:
-              - rgba(250,250,250,0.3)
-              - rgba(200,200,200,0.3)
-      logAxis:
-        axisLine:
-          show: true
-          lineStyle:
-            color: "#27727b"
-        axisTick:
-          show: true
-          lineStyle:
-            color: "#333"
-        axisLabel:
-          show: true
-          color: "#333"
-        splitLine:
-          show: true
-          lineStyle:
-            color:
-              - "#ccc"
-        splitArea:
-          show: false
-          areaStyle:
-            color:
-              - rgba(250,250,250,0.3)
-              - rgba(200,200,200,0.3)
-      timeAxis:
-        axisLine:
-          show: true
-          lineStyle:
-            color: "#27727b"
-        axisTick:
-          show: true
-          lineStyle:
-            color: "#333"
-        axisLabel:
-          show: true
-          color: "#333"
-        splitLine:
-          show: true
-          lineStyle:
-            color:
-              - "#ccc"
-        splitArea:
-          show: false
-          areaStyle:
-            color:
-              - rgba(250,250,250,0.3)
-              - rgba(200,200,200,0.3)
-      toolbox:
-        iconStyle:
-          borderColor: "#c1232b"
-        emphasis:
-          iconStyle:
-            borderColor: "#e87c25"
-      legend:
-        textStyle:
-          color: "#333333"
-      tooltip:
-        axisPointer:
-          lineStyle:
-            color: "#27727b"
-            width: 1
-          crossStyle:
-            color: "#27727b"
-            width: 1
-      timeline:
-        lineStyle:
-          color: "#293c55"
-          width: 1
-        itemStyle:
-          color: "#27727b"
-          borderWidth: 1
-        controlStyle:
-          color: "#27727b"
-          borderColor: "#27727b"
-          borderWidth: 0.5
-        checkpointStyle:
-          color: "#c1232b"
-          borderColor: "#c23531"
-        label:
-          color: "#293c55"
-        emphasis:
-          itemStyle:
-            color: "#72d4e0"
-          controlStyle:
-            color: "#27727b"
-            borderColor: "#27727b"
-            borderWidth: 0.5
-          label:
-            color: "#293c55"
-      visualMap:
-        color:
-          - "#c1232b"
-          - "#fcce10"
-      dataZoom:
-        backgroundColor: rgba(0,0,0,0)
-        dataBackgroundColor: rgba(181,195,52,0.3)
-        fillerColor: rgba(181,195,52,0.2)
-        handleColor: "#27727b"
-        handleSize: 100%
-        textStyle:
-          color: "#999999"
-      markPoint:
-        label:
-          color: "#eeeeee"
-        emphasis:
-          label:
-            color: "#eeeeee"
-  background_color: "#bbd9d55e"
+  background_color: "#cbe6e2"
   text_color: "#27727b"
   tile_background_color: "#0000"
-  tile_border_color: "#ececec"
+  tile_border_color: "#c8c6c6"
