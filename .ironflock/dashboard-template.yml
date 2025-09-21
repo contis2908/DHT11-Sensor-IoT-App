@@ -388,7 +388,7 @@ widgets:
           route: $str:/Stockholm
         - label: $str:Frankfurt
           iconName: $str:image
-          route: $str:/frankfurt
+          route: $str:/Frankfurt
       route: null
     version: 1.0.4
     layout_id: 81e4db24-5efe-4caa-9802-3b10c515788a
