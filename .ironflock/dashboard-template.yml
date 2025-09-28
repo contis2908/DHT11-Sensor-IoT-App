@@ -476,41 +476,41 @@ layout:
   gridLayout:
     - x: 0
       y: 0
-      w: 2
-      h: 24
+      w: 7
+      h: 48
       id: 81e4db24-5efe-4caa-9802-3b10c515788a
-    - x: 2
+    - x: 7
       y: 0
-      w: 10
-      h: 9
-      id: "10"
-    - x: 2
-      y: 9
-      w: 4
-      h: 7
+      w: 15
+      h: 22
       id: "6"
-    - x: 6
-      y: 9
-      w: 6
-      h: 15
-      id: "7"
-    - x: 2
-      y: 16
-      w: 4
-      h: 8
+    - x: 22
+      y: 0
+      w: 26
+      h: 22
+      id: "10"
+    - x: 7
+      y: 22
+      w: 15
+      h: 26
       id: "4"
+    - x: 22
+      y: 22
+      w: 26
+      h: 26
+      id: "7"
   subRoutes:
     "*":
       gridLayout:
         - x: 0
           y: 0
-          w: 2
-          h: 24
+          w: 7
+          h: 48
           id: 81e4db24-5efe-4caa-9802-3b10c515788a
-        - x: 2
+        - x: 7
           y: 0
-          w: 10
-          h: 24
+          w: 41
+          h: 48
           id: 5bbaf1fd-0a03-4946-a44f-5fd264bee5aa
 style:
   theme:
