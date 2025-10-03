@@ -55,7 +55,6 @@ widgets:
     version: 1.6.19
     layout_id: 1
   - package_name: widget-value
-    version: 1.1.17
     chartconfig:
       title: $str:Average temperature & humidity
       subTitle: $str:Average values of all devices running the app
@@ -67,14 +66,12 @@ widgets:
             labelColor: $str:#657be6
           advanced:
             averageLatest: $num:1
-          data:
-            tableRef:
-              tablename: myagg
-              queryParams:
-                limit: 50
-              format:
-                value: avg_temp
-                pivot: devname
+          precision: "$num:"
+          value:
+            valueRef:
+              tablename: sensordata
+              column: temp1
+          multiChart: null
         - label: $str:Humidity
           unit: $str:%
           styling:
@@ -82,14 +79,13 @@ widgets:
             labelColor: $str:#7689a7
           advanced:
             averageLatest: $num:1
-          data:
-            tableRef:
-              tablename: myagg
-              queryParams:
-                limit: 50
-              format:
-                value: avg_hmd
-                pivot: devname
+          precision: "$num:"
+          value:
+            valueRef:
+              tablename: sensordata
+              column: humidity
+          multiChart: null
+    version: 1.1.20
     layout_id: 4
   - version: 1.1.7
     package_name: widget-image
@@ -98,7 +94,7 @@ widgets:
       title:
         text: $str:DHT-11 Sensor
     layout_id: 5
-  - version: 1.1.7
+  - version: 1.1.8
     package_name: widget-textbox
     chartconfig:
       subTitle:
@@ -215,19 +211,19 @@ widgets:
             backgroundColors: []
           advanced:
             averageLatest: $num:1
+          precision: $num:1
+          valueColor: ""
+          multiChart: $bool:true
           data:
             tableRef:
               tablename: sensordata
               queryParams:
                 limit: 50
-                windowLength: 5
-                nowMinusPeriods: 0
               format:
-                value: temp1
                 tsp: tsp
+                value: temp1
                 pivot: devname
-          precision: $num:1
-    version: 1.7.15
+    version: 1.7.19
     layout_id: 10
   - chartconfig:
       axis:
@@ -382,15 +378,19 @@ widgets:
       navItems:
         - label: $str:Overview
           iconName: $str:home
-          route: "$str:"
+          route: $str:/
+          leadingSlash: null
+          trailingSlash: null
         - label: $str:Stockholm
           iconName: $str:image
           route: $str:/Stockholm
         - label: $str:Frankfurt
           iconName: $str:image
           route: $str:/Frankfurt
-      route: null
-    version: 1.0.4
+      route: $str:/
+      leadingSlash: null
+      trailingSlash: null
+    version: 1.0.10
     layout_id: 81e4db24-5efe-4caa-9802-3b10c515788a
   - package_name: widget-sidenav
     chartconfig:
