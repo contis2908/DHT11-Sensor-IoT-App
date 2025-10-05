@@ -223,7 +223,7 @@ widgets:
                 tsp: tsp
                 value: temp1
                 pivot: devname
-    version: 1.7.19
+    version: 1.7.21
     layout_id: 10
   - chartconfig:
       axis:
@@ -367,7 +367,7 @@ widgets:
                 useRoute: true
             limit: 1
       subTitle: "$str:"
-    version: 1.6.19
+    version: 1.6.20
     layout_id: 5bbaf1fd-0a03-4946-a44f-5fd264bee5aa
   - package_name: widget-sidenav
     chartconfig:
