@@ -106,7 +106,7 @@ widgets:
     layout_id: 6
   - package_name: widget-mapbox
     chartconfig:
-      style: $str:light-v11
+      style: $str:streets-v12
       follow: $bool:true
       dataseries:
         - label: $str:Sensor GPS position
@@ -137,17 +137,14 @@ widgets:
           latestValues: $num:10
           symbol:
             text-color: ""
-            text-size: null
-            icon-image: null
-            icon-size: null
-          heatmap:
+          heatmapConfig:
             heatmap-intensity: $num:2
             heatmap-opacity: $num:0.6
-            heatmap-radius: $num:111
+            heatmap-radius: $num:60
       showLegend: $bool:false
       title: null
       subTitle: null
-    version: 1.5.11
+    version: 1.5.13
     layout_id: 7
   - package_name: widget-table
     chartconfig:
@@ -223,7 +220,7 @@ widgets:
                 tsp: tsp
                 value: temp1
                 pivot: devname
-    version: 1.7.21
+    version: 1.7.22
     layout_id: 10
   - chartconfig:
       axis:
