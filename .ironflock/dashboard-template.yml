@@ -378,7 +378,7 @@ widgets:
       navItems:
         - label: $str:Overview
           iconName: $str:home
-          route: $str:/
+          route: $str:/overview
           leadingSlash: null
           trailingSlash: null
         - label: $str:Stockholm
@@ -387,7 +387,7 @@ widgets:
         - label: $str:Frankfurt
           iconName: $str:image
           route: $str:/Frankfurt
-      route: $str:/
+      route: $str:/overview
       leadingSlash: null
       trailingSlash: null
     version: 1.0.10
