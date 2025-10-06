@@ -384,7 +384,7 @@ widgets:
         - label: $str:Frankfurt
           iconName: $str:image
           route: $str:/Frankfurt
-      route: $str:/overview
+      route: $str:/
       leadingSlash: null
       trailingSlash: null
     version: 1.0.10
@@ -509,6 +509,33 @@ layout:
           w: 41
           h: 48
           id: 5bbaf1fd-0a03-4946-a44f-5fd264bee5aa
+    overview:
+      gridLayout:
+        - x: 0
+          y: 0
+          w: 7
+          h: 48
+          id: 81e4db24-5efe-4caa-9802-3b10c515788a
+        - x: 7
+          y: 0
+          w: 15
+          h: 22
+          id: "6"
+        - x: 22
+          y: 0
+          w: 26
+          h: 22
+          id: "10"
+        - x: 22
+          y: 22
+          w: 26
+          h: 26
+          id: "7"
+        - x: 7
+          y: 22
+          w: 15
+          h: 26
+          id: "4"
 style:
   theme:
     theme_name: infographic
